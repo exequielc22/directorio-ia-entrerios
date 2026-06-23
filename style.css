@@ -1,0 +1,179 @@
+/* Paleta de Colores y Estilos Personalizados */
+:root {
+    --primary-blue: #3B82F6;
+    --dark-blue: #1E293B;
+    --bg-gray: #F8FAFC;
+    --success-green: #10B981;
+    --text-gray: #4B5563;
+}
+
+body {
+    background-color: var(--bg-gray);
+    color: var(--dark-blue);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Animaciones suaves para las tarjetas */
+.tool-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Animación Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Estilo para los botones de categoría activos */
+.category-btn.active {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* Optimización para móviles (Mobile-First) */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Estilos para el banner de AdSense */
+.adsense-placeholder {
+    border: 2px dashed #CBD5E1;
+    background-color: #F1F5F9;
+}
+
+/* Estilos para Modo Oscuro */
+body.dark-mode {
+    background-color: #0F172A;
+    color: #F1F5F9;
+}
+
+.dark-mode .bg-white {
+    background-color: #1E293B;
+}
+
+.dark-mode .text-gray-800, 
+.dark-mode .text-gray-700, 
+.dark-mode .text-gray-600 {
+    color: #E2E8F0;
+}
+
+.dark-mode .shadow-md, 
+.dark-mode .shadow-sm {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .border-gray-100 {
+    border-color: #334155;
+}
+
+.dark-mode .bg-gray-200 {
+    background-color: #334155;
+    color: #F1F5F9;
+}
+
+.dark-mode .bg-gray-100 {
+    background-color: #0F172A;
+}
+
+.dark-mode .category-btn:not(.bg-blue-500) {
+    background-color: #334155;
+    color: #E2E8F0;
+}
+
+.dark-mode .category-btn:hover:not(.bg-blue-500) {
+    background-color: #475569;
+}
+
+.dark-mode .adsense-placeholder {
+    background-color: #334155;
+    border-color: #475569;
+    color: #CBD5E1;
+}
+
+/* Estilos para la Sección de Sugerencias */
+#suggestion-section {
+    transition: all 0.5s ease-in-out;
+}
+
+#suggestion-section.hidden {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+}
+
+#suggestion-section:not(.hidden) {
+    display: block;
+    opacity: 1;
+    max-height: 2000px; /* Suficiente para el formulario */
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes de Modo Oscuro para la Sección de Sugerencias */
+.dark-mode #suggestion-section {
+    background-color: #1E293B;
+    border-color: #334155;
+}
+
+.dark-mode .form-container {
+    background-color: #0F172A;
+}
+
+/* Estilos para el Acordeón FAQ */
+.faq-question.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer:not(.hidden) {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.dark-mode .faq-item {
+    background-color: #1E293B;
+    border-color: #334155;
+}
+
+.dark-mode .faq-question {
+    color: #F1F5F9;
+}
+
+.dark-mode .faq-question:hover {
+    background-color: #334155;
+}
+
+.dark-mode .faq-answer {
+    color: #CBD5E1;
+    border-color: #334155;
+}
