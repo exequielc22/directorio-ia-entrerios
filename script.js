@@ -44,21 +44,21 @@ const tools = [
     },
     {
         name: "Fireflies.ai",
-        category: "Trabajo remoto",
+        category: "Trabajo Remoto",
         description: "Asistente de voz de IA que graba y transcribe automáticamente reuniones en Zoom o Google Meet.",
         icon: "📝",
         link: "https://fireflies.ai"
     },
     {
         name: "Gemini Enterprise Agent Platform",
-        category: "Trabajo remoto",
+        category: "Trabajo Remoto",
         description: "Plataforma para crear agentes de IA personalizados usando planos prediseñados en Agent Garden.",
         icon: "🤖",
         link: "https://cloud.google.com/gemini/docs/agents"
     },
     {
         name: "Make",
-        category: "Trabajo remoto",
+        category: "Trabajo Remoto",
         description: "Plataforma de automatización visual para conectar tus aplicaciones y optimizar flujos de trabajo.",
         icon: "⚙️",
         link: "https://www.make.com"
@@ -208,21 +208,21 @@ const tools = [
     },
     {
         name: "Homestyler",
-        category: "Tareas del hogar",
+        category: "Tareas del Hogar",
         description: "Aplicación de IA para remodelar espacios, cambiar pintura o mover muebles virtualmente.",
         icon: "🏠",
         link: "https://www.homestyler.com"
     },
     {
         name: "Microsoft To Do",
-        category: "Tareas del hogar",
+        category: "Tareas del Hogar",
         description: "Planificador sencillo con calendario visual para controlar tus proyectos y tareas pendientes.",
         icon: "✅",
         link: "https://todo.microsoft.com"
     },
     {
         name: "Google Keep",
-        category: "Tareas del hogar",
+        category: "Tareas del Hogar",
         description: "Herramienta de organización personal para anotar ideas, tareas y etiquetarlas por estado.",
         icon: "💡",
         link: "https://keep.google.com"
