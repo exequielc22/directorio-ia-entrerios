@@ -55,7 +55,6 @@ const tools = [
         description: "Plataforma para crear agentes de IA personalizados usando planos prediseñados en Agent Garden.",
         icon: "🤖",
         link: "https://cloud.google.com/gemini/docs/agents"
-        isPro: true
     },
     {
         name: "Make",
@@ -63,7 +62,6 @@ const tools = [
         description: "Plataforma de automatización visual para conectar tus aplicaciones y optimizar flujos de trabajo.",
         icon: "⚙️",
         link: "https://www.make.com"
-        isPro: true
     },
     {
         name: "Perplexity",
