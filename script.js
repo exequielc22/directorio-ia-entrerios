@@ -43,6 +43,29 @@ const tools = [
         isPro: false
     },
     {
+        name: "Fireflies.ai",
+        category: "Trabajo remoto",
+        description: "Asistente de voz de IA que graba y transcribe automáticamente reuniones en Zoom o Google Meet.",
+        icon: "📝",
+        link: "https://fireflies.ai"
+    },
+    {
+        name: "Gemini Enterprise Agent Platform",
+        category: "Trabajo remoto",
+        description: "Plataforma para crear agentes de IA personalizados usando planos prediseñados en Agent Garden.",
+        icon: "🤖",
+        link: "https://cloud.google.com/gemini/docs/agents"
+        isPro: true
+    },
+    {
+        name: "Make",
+        category: "Trabajo remoto",
+        description: "Plataforma de automatización visual para conectar tus aplicaciones y optimizar flujos de trabajo.",
+        icon: "⚙️",
+        link: "https://www.make.com"
+        isPro: true
+    },
+    {
         name: "Perplexity",
         category: "Estudios/Educación",
         description: "Como un Google que te da la respuesta directa y te dice de dónde sacó la info.",
@@ -73,6 +96,97 @@ const tools = [
         isPro: false
     },
     {
+        name: "Otter.ai",
+        category: "Estudios/Educación",
+        description: "Transcribe clases en tiempo real y entrega resúmenes estructurados.",
+        icon: "🎙️",
+        link: "https://otter.ai"
+    },
+    {
+        name: "Grammarly",
+        category: "Estudios/Educación",
+        description: "Corregí gramática, ortografía y puntuación en tus trabajos.",
+        icon: "✍️",
+        link: "https://grammarly.com"
+    },
+    {
+        name: "Scholarcy",
+        category: "Estudios/Educación",
+        description: "Resume automáticamente artículos académicos complejos.",
+        icon: "📚",
+        link: "https://scholarcy.com"
+    },
+    {
+        name: "Mapify",
+        category: "Estudios/Educación",
+        description: "Genera mapas mentales y guías visuales a partir de texto.",
+        icon: "🧠",
+        link: "https://mapify.so"
+    },
+    {
+        name: "Zotero",
+        category: "Estudios/Educación",
+        description: "Solución profesional para crear bibliografías y gestionar referencias.",
+        icon: "📁",
+        link: "https://zotero.org"
+    },
+    {
+        name: "Mendeley",
+        category: "Estudios/Educación",
+        description: "Herramienta para encontrar fuentes científicas y estructurar bibliografías.",
+        icon: "🔍",
+        link: "https://mendeley.com"
+    },
+    {
+        name: "Wolfram Alpha",
+        category: "Estudios/Educación",
+        description: "Motor de conocimiento para resolver problemas matemáticos y científicos.",
+        icon: "🧮",
+        link: "https://wolframalpha.com"
+    },
+    {
+        name: "Nerd AI",
+        category: "Estudios/Educación",
+        description: "Escanea documentos para obtener cuestionarios, resúmenes y soluciones.",
+        icon: "🤖",
+        link: "https://nerd-ai.com"
+    },
+    {
+        name: "Socratic",
+        category: "Estudios/Educación",
+        description: "IA para estudiantes pensada para resolver dudas de cualquier materia.",
+        icon: "🎓",
+        link: "https://socratic.org"
+    },
+    {
+        name: "Quizlet AI",
+        category: "Estudios/Educación",
+        description: "Crea tarjetas de estudio y cuestionarios a partir de tus apuntes.",
+        icon: "📝",
+        link: "https://quizlet.com"
+    },
+    {
+        name: "Gradescope",
+        category: "Estudios/Educación",
+        description: "Emplea inteligencia de datos para calificar trabajos y exámenes.",
+        icon: "✔️",
+        link: "https://gradescope.com"
+    },
+    {
+        name: "Tutor.ai",
+        category: "Estudios/Educación",
+        description: "Recibe respuestas y explicaciones detalladas para temas complejos.",
+        icon: "💬",
+        link: "https://tutor.ai"
+    },
+    {
+        name: "LanguageTool",
+        category: "Estudios/Educación",
+        description: "Asistente para redactar informes, memorias técnicas y documentación.",
+        icon: "📝",
+        link: "https://languagetool.org"
+    },
+    {
         name: "Goblin.tools",
         category: "Tareas del Hogar",
         description: "Te ayuda a desglosar tareas complejas en pasos simples.",
@@ -93,6 +207,27 @@ const tools = [
         icon: "🧹",
         link: "https://sweepy.app/",
         isPro: false
+    },
+    {
+        name: "Homestyler",
+        category: "Tareas del hogar",
+        description: "Aplicación de IA para remodelar espacios, cambiar pintura o mover muebles virtualmente.",
+        icon: "🏠",
+        link: "https://www.homestyler.com"
+    },
+    {
+        name: "Microsoft To Do",
+        category: "Tareas del hogar",
+        description: "Planificador sencillo con calendario visual para controlar tus proyectos y tareas pendientes.",
+        icon: "✅",
+        link: "https://todo.microsoft.com"
+    },
+    {
+        name: "Google Keep",
+        category: "Tareas del hogar",
+        description: "Herramienta de organización personal para anotar ideas, tareas y etiquetarlas por estado.",
+        icon: "💡",
+        link: "https://keep.google.com"
     },
     {
         name: "Bing Image Creator",
