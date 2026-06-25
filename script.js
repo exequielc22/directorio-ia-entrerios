@@ -503,7 +503,7 @@ function buscarHerramienta() {
     const responseElement = document.getElementById('chat-response');
     
     // Diccionario de equivalencias (para que "fotos" sea igual a "imagen")
-    const dic = { "fotos": "imagen", "foto": "imagen", "programar": "programación", "escribir": "texto" };
+    const dic = { "fotos": "imagen", "foto": "imagen", "codigo": "IA Avanzada", "escribir": "texto" };
     const query = dic[input] || input;
 
     const sugerencias = tools.filter(t => 
