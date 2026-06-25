@@ -219,3 +219,14 @@ body.dark-mode {
         min-height: 350px;
     }
 }
+
+/* --- Estilos para el Chatbot --- */
+#chat-input {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+    border: 1px solid #d1d5db;
+}
+
+#chat-response {
+    color: #374151;
+}

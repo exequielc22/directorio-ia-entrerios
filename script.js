@@ -529,3 +529,8 @@ function buscarHerramienta() {
         responseElement.innerText = "No encontré nada con ese término. Probá con 'programación', 'imagen' o 'texto'.";
     }
 }
+
+function preguntar(categoria) {
+    document.getElementById('chat-input').value = categoria;
+    buscarHerramienta(); // Llama a tu función de búsqueda automáticamente
+}
