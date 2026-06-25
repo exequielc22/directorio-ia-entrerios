@@ -502,9 +502,10 @@ function buscarHerramienta() {
     const input = document.getElementById('chat-input').value.toLowerCase();
     const responseElement = document.getElementById('chat-response');
     
-    // Asumo que tu array de herramientas se llama 'tools'
-    // Si se llama diferente, cámbialo aquí
-    const sugerencia = tools.find(t => 
+    // Filtramos para buscar por categoría (asumiendo que tu objeto tiene una propiedad 'category')
+    // Ajusta 't.category' si tu objeto usa otro nombre como 't.tags'
+    const sugerencias = tools.filter(t => 
+        t.category.toLowerCase().includes(input) || 
         t.description.toLowerCase().includes(input) || 
         t.name.toLowerCase().includes(input)
     );
@@ -514,10 +515,15 @@ function buscarHerramienta() {
         return;
     }
 
-    if (sugerencia) {
-        responseElement.innerHTML = `¡Te recomiendo <strong>${sugerencia.name}</strong>! ${sugerencia.description} <br> 
-        <a href="${sugerencia.link}" target="_blank" class="text-yellow-400 underline">Probarla aquí →</a>`;
+    if (sugerencias.length > 0) {
+        // Mostramos las primeras 3 recomendaciones encontradas
+        const lista = sugerencias.slice(0, 3).map(t => t.name).join(", ");
+        responseElement.innerHTML = `¡Encontré estas herramientas para vos: <strong>${lista}</strong>! 
+        <br> <span class="text-blue-200">Revisá abajo las tarjetas filtradas para más detalle.</span>`;
+        
+        // Opcional: Si quieres que además se filtren las tarjetas automáticamente:
+        // filtrarTarjetas(input); 
     } else {
-        responseElement.innerText = "Hmm, no encontré una herramienta exacta. ¡Probá buscando 'programar' o 'imagen'!";
+        responseElement.innerText = "No encontré nada con ese término. Probá con 'programación', 'imagen' o 'texto'.";
     }
 }
