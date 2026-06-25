@@ -59,6 +59,23 @@
                 <button class="category-btn bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-colors duration-300" data-category="Trámites y Consultas">Trámites y Consultas</button>
                 <button class="category-btn bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-colors duration-300" data-category="IA Avanzada">IA Avanzada</button>
             </div>
+            </div> 
+        </section>
+
+        <section id="chat-bot" class="my-10 p-6 bg-blue-900 rounded-xl text-white shadow-lg">
+            <h2 class="text-xl font-bold mb-4">¿No sabés qué herramienta usar?</h2>
+            <div class="flex gap-2">
+               <input type="text" id="chat-input" placeholder="Ej: quiero programar, editar fotos..." 
+                      class="flex-grow p-3 rounded-lg text-black">
+               <button onclick="buscarHerramienta()" class="bg-blue-500 px-6 py-3 rounded-lg font-bold hover:bg-blue-400">
+                Preguntar
+               </button>
+           </div>
+           <p id="chat-response" class="mt-4 italic text-blue-200"></p>
+        </section>
+
+        <div id="tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           </div>
 
             <!-- Contenedor de Tarjetas de Herramientas -->
             <div id="tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

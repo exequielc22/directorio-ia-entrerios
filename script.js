@@ -497,3 +497,27 @@ function toggleFavorito(nombreHerramienta) {
     // IMPORTANTE: Volvemos a renderizar para que el icono cambie de ☆ a ⭐
     renderTools(tools); 
 }
+
+function buscarHerramienta() {
+    const input = document.getElementById('chat-input').value.toLowerCase();
+    const responseElement = document.getElementById('chat-response');
+    
+    // Asumo que tu array de herramientas se llama 'tools'
+    // Si se llama diferente, cámbialo aquí
+    const sugerencia = tools.find(t => 
+        t.description.toLowerCase().includes(input) || 
+        t.name.toLowerCase().includes(input)
+    );
+
+    if (input.trim() === "") {
+        responseElement.innerText = "Por favor, escribí algo primero.";
+        return;
+    }
+
+    if (sugerencia) {
+        responseElement.innerHTML = `¡Te recomiendo <strong>${sugerencia.name}</strong>! ${sugerencia.description} <br> 
+        <a href="${sugerencia.link}" target="_blank" class="text-yellow-400 underline">Probarla aquí →</a>`;
+    } else {
+        responseElement.innerText = "Hmm, no encontré una herramienta exacta. ¡Probá buscando 'programar' o 'imagen'!";
+    }
+}
