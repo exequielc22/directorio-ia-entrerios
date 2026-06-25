@@ -502,12 +502,14 @@ function buscarHerramienta() {
     const input = document.getElementById('chat-input').value.toLowerCase();
     const responseElement = document.getElementById('chat-response');
     
-    // Filtramos para buscar por categoría (asumiendo que tu objeto tiene una propiedad 'category')
-    // Ajusta 't.category' si tu objeto usa otro nombre como 't.tags'
+    // Diccionario de equivalencias (para que "fotos" sea igual a "imagen")
+    const dic = { "fotos": "imagen", "foto": "imagen", "programar": "programación", "escribir": "texto" };
+    const query = dic[input] || input;
+
     const sugerencias = tools.filter(t => 
-        t.category.toLowerCase().includes(input) || 
-        t.description.toLowerCase().includes(input) || 
-        t.name.toLowerCase().includes(input)
+        t.category.toLowerCase().includes(query) || 
+        t.description.toLowerCase().includes(query) || 
+        t.name.toLowerCase().includes(query)
     );
 
     if (input.trim() === "") {

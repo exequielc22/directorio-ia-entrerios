@@ -59,23 +59,7 @@
                 <button class="category-btn bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-colors duration-300" data-category="Trámites y Consultas">Trámites y Consultas</button>
                 <button class="category-btn bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-colors duration-300" data-category="IA Avanzada">IA Avanzada</button>
             </div>
-            </div> 
-        </section>
-
-        <section id="chat-bot" class="my-10 p-6 bg-blue-900 rounded-xl text-white shadow-lg">
-            <h2 class="text-xl font-bold mb-4">¿No sabés qué herramienta usar?</h2>
-            <div class="flex gap-2">
-               <input type="text" id="chat-input" placeholder="Ej: quiero programar, editar fotos..." 
-                      class="flex-grow p-3 rounded-lg text-black">
-               <button onclick="buscarHerramienta()" class="bg-blue-500 px-6 py-3 rounded-lg font-bold hover:bg-blue-400">
-                Preguntar
-               </button>
-           </div>
-           <p id="chat-response" class="mt-4 italic text-blue-200"></p>
-        </section>
-
-        <div id="tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-           </div>
+            
 
             <!-- Contenedor de Tarjetas de Herramientas -->
             <div id="tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -230,5 +214,24 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Botón Flotante -->
+<button onclick="toggleChat()" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition">
+    💬 IA Help
+</button>
+
+<!-- Ventana de Chat (Flotante) -->
+<div id="chat-window" class="hidden fixed bottom-24 right-6 w-80 bg-white border border-blue-200 shadow-2xl rounded-2xl p-4 z-50">
+    <h3 class="font-bold text-blue-900 mb-2">Asistente IA</h3>
+    <input type="text" id="chat-input" placeholder="¿Qué buscás hoy?" class="w-full p-2 border rounded-lg mb-2">
+    <button onclick="buscarHerramienta()" class="bg-blue-600 text-white w-full py-2 rounded-lg">Enviar</button>
+    <div id="chat-response" class="mt-3 text-sm text-gray-700"></div>
+</div>
+
+<script>
+    function toggleChat() {
+        document.getElementById('chat-window').classList.toggle('hidden');
+    }
+</script>
 </body>
 </html>
