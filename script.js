@@ -332,21 +332,32 @@ const tools = [
 // 2. Función para renderizar las tarjetas
 function renderTools(filteredTools) {
     const container = document.getElementById('tool-cards-container');
-    container.innerHTML = ''; // Limpia el contenedor antes de dibujar
+    container.innerHTML = ''; 
+
+    // Recuperamos los favoritos actuales
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
     filteredTools.forEach((tool, index) => {
-        // Lógica de la etiqueta PRO
+        // Lógica de etiquetas
         const proLabel = tool.isPro ? 
-            '<span class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">PRO</span>' : '';
+            '<span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">PRO</span>' : '';
+        
+        // Verificamos si es favorito para elegir el icono
+        const esFavorito = favoritos.includes(tool.name);
+        const favButton = `
+            <button onclick="toggleFavorito('${tool.name}')" class="absolute top-2 right-2 text-xl focus:outline-none transition-transform hover:scale-125">
+                ${esFavorito ? '⭐' : '☆'}
+            </button>
+        `;
 
         const card = document.createElement('div');
-        // Agregamos 'relative' para que la etiqueta PRO se posicione correctamente
         card.className = "relative bg-white p-6 rounded-lg shadow-md border border-gray-200 fade-in";
-        card.style.animationDelay = `${index * 0.1}s`; // Efecto stagger
+        card.style.animationDelay = `${index * 0.1}s`;
 
         card.innerHTML = `
             ${proLabel}
-            <div class="text-4xl mb-4">${tool.icon}</div>
+            ${favButton}
+            <div class="text-4xl mb-4 mt-4">${tool.icon}</div>
             <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
             <p class="text-gray-600 mb-4">${tool.description}</p>
             <a href="${tool.link}" target="_blank" class="text-blue-600 font-semibold hover:underline">Probar herramienta →</a>
@@ -468,4 +479,21 @@ if ('serviceWorker' in navigator) {
       .then(() => console.log('PWA Service Worker registrado'))
       .catch((err) => console.log('Error:', err));
   });
+}
+
+function toggleFavorito(nombreHerramienta) {
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    
+    if (favoritos.includes(nombreHerramienta)) {
+        // Si ya está, lo eliminamos
+        favoritos = favoritos.filter(item => item !== nombreHerramienta);
+    } else {
+        // Si no está, lo agregamos
+        favoritos.push(nombreHerramienta);
+    }
+    
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    
+    // IMPORTANTE: Volvemos a renderizar para que el icono cambie de ☆ a ⭐
+    renderTools(tools); 
 }
