@@ -47,10 +47,11 @@
             </p>
             <!-- Buscador y Modo Oscuro -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                <div class="relative w-full">
+                <div class="relative w-full search-wrapper">
                     <input type="text" id="search-input" placeholder="Buscar herramienta (ej: 'diseño', 'texto')..." 
-                           class="w-full px-6 py-3 rounded-full text-gray-800 focus:outline-none shadow-md">
+                           class="w-full px-6 py-3 rounded-full text-gray-800 focus:outline-none shadow-md" autocomplete="off">
                     <span class="absolute right-4 top-3 text-gray-400">🔍</span>
+                    <div id="autocomplete-list" class="autocomplete-list"></div>
                 </div>
                 <button id="dark-mode-toggle" class="btn-press bg-blue-800 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-blue-900 transition-colors duration-300 whitespace-nowrap">
                     🌙 Modo Oscuro
@@ -62,6 +63,22 @@
 
             <!-- Historial de búsquedas recientes -->
             <div id="history-chips" class="flex flex-wrap justify-center gap-2 mt-4 max-w-2xl mx-auto"></div>
+
+            <!-- Contadores animados -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="stat-tools" data-target="0">0</div>
+                    <div class="hero-stat-label">Herramientas</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="stat-categories" data-target="0">0</div>
+                    <div class="hero-stat-label">Categorías</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="stat-free" data-target="0">0</div>
+                    <div class="hero-stat-label">Gratuitas</div>
+                </div>
+            </div>
 
             <!-- 
                 BLOQUE DE ADSENSE - Actualmente OCULTO porque la cuenta todavía no fue aprobada.
@@ -273,7 +290,7 @@
                 <div class="flex gap-3 mt-4">
                     <a href="#" class="social-icon" aria-label="Instagram">📷</a>
                     <a href="#" class="social-icon" aria-label="WhatsApp">💬</a>
-                    <a href="exequielbusiness@hotmail.com" class="social-icon" aria-label="Email">✉️</a>
+                    <a href="#" class="social-icon" aria-label="Email">✉️</a>
                 </div>
             </div>
 
@@ -303,7 +320,7 @@
                 <h4>Contacto</h4>
                 <ul class="space-y-2 text-sm">
                     <li>📍 Paraná, Entre Ríos</li>
-                    <li>✉️ exequielbusiness@hotmail.com</li>
+                    <li>✉️ contacto@tudirectorioia.com</li>
                 </ul>
             </div>
         </div>

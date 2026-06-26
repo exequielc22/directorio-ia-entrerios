@@ -329,6 +329,16 @@ const tools = [
    }
 ];
 
+// 1.b Mapa de categorías a su "slug" de color (usado en CSS vía data-category-color)
+const categoryColorMap = {
+    "Trabajo Remoto": "remoto",
+    "Estudios/Educación": "educacion",
+    "Tareas del Hogar": "hogar",
+    "Creatividad/Diseño": "creatividad",
+    "Trámites y Consultas": "tramites",
+    "IA Avanzada": "avanzada"
+};
+
 // 2. Función para renderizar las tarjetas
 function renderTools(filteredTools, containerId = 'tool-cards-container') {
     const container = document.getElementById(containerId);
@@ -348,6 +358,16 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
         const proLabel = tool.isPro ?
             '<span class="badge-pro">⚡ PRO</span>' : '';
 
+        // Badge de precio: si ya es PRO no mostramos "Freemium" aparte (sería redundante,
+        // el badge PRO ya comunica que no es 100% gratuita). Solo mostramos "Gratis"
+        // para las que no son PRO, dejando el badge PRO solo para las que sí lo son.
+        const pricingLabel = tool.isPro ?
+            '' : '<span class="badge-pricing is-free">Gratis</span>';
+
+        // Color por categoría
+        const colorSlug = categoryColorMap[tool.category] || '';
+        const categoryTag = `<span class="category-tag">${tool.category}</span>`;
+
         // Verificamos si es favorito para elegir el icono
         const esFavorito = favoritos.includes(tool.name);
         const favButton = `
@@ -359,12 +379,15 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
         const card = document.createElement('div');
         card.className = "tool-card";
         card.style.animationDelay = `${(index % 12) * 0.06}s`;
+        if (colorSlug) card.setAttribute('data-category-color', colorSlug);
 
         card.innerHTML = `
             ${proLabel}
+            ${pricingLabel}
             ${favButton}
             <div class="tool-card-inner">
                 <div class="tool-icon-badge">${tool.icon}</div>
+                ${categoryTag}
                 <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
                 <p class="text-gray-600 mb-4">${tool.description}</p>
                 <a href="${tool.link}" target="_blank" rel="noopener" class="tool-try-btn">
@@ -413,6 +436,102 @@ const searchInput = document.getElementById('search-input');
 searchInput.addEventListener('input', (e) => {
     searchQuery = e.target.value;
     filterAndSearch();
+});
+
+// 6.b Autocompletado inteligente del buscador
+const autocompleteList = document.getElementById('autocomplete-list');
+let acActiveIndex = -1;
+let acCurrentMatches = [];
+
+function renderAutocomplete(query) {
+    if (!autocompleteList) return;
+
+    const q = query.trim().toLowerCase();
+    if (q.length < 2) {
+        closeAutocomplete();
+        return;
+    }
+
+    // Buscamos coincidencias por nombre primero (más relevante), luego por categoría/descripción
+    const porNombre = tools.filter(t => t.name.toLowerCase().includes(q));
+    const porOtro = tools.filter(t =>
+        !porNombre.includes(t) &&
+        (t.category.toLowerCase().includes(q) || t.description.toLowerCase().includes(q))
+    );
+    acCurrentMatches = [...porNombre, ...porOtro].slice(0, 6);
+
+    if (acCurrentMatches.length === 0) {
+        closeAutocomplete();
+        return;
+    }
+
+    autocompleteList.innerHTML = acCurrentMatches.map((tool, i) => `
+        <div class="autocomplete-item" data-index="${i}" onclick="seleccionarAutocomplete(${i})">
+            <span class="ac-icon">${tool.icon}</span>
+            <span>${tool.name}</span>
+            <span class="ac-cat">${tool.category}</span>
+        </div>
+    `).join('');
+
+    acActiveIndex = -1;
+    autocompleteList.classList.add('is-open');
+}
+
+function closeAutocomplete() {
+    if (!autocompleteList) return;
+    autocompleteList.classList.remove('is-open');
+    autocompleteList.innerHTML = '';
+    acCurrentMatches = [];
+    acActiveIndex = -1;
+}
+
+function seleccionarAutocomplete(index) {
+    const tool = acCurrentMatches[index];
+    if (!tool) return;
+    searchInput.value = tool.name;
+    searchQuery = tool.name;
+    filterAndSearch();
+    guardarEnHistorial(tool.name);
+    closeAutocomplete();
+    document.getElementById('categorias').scrollIntoView({ behavior: 'smooth' });
+}
+
+searchInput.addEventListener('input', (e) => {
+    renderAutocomplete(e.target.value);
+});
+
+// Navegación del autocompletado con teclado (flechas + Enter + Escape)
+searchInput.addEventListener('keydown', (e) => {
+    if (!autocompleteList || !autocompleteList.classList.contains('is-open')) return;
+    const items = autocompleteList.querySelectorAll('.autocomplete-item');
+
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        acActiveIndex = Math.min(acActiveIndex + 1, items.length - 1);
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        acActiveIndex = Math.max(acActiveIndex - 1, 0);
+    } else if (e.key === 'Enter') {
+        if (acActiveIndex >= 0) {
+            e.preventDefault();
+            seleccionarAutocomplete(acActiveIndex);
+        }
+        return;
+    } else if (e.key === 'Escape') {
+        closeAutocomplete();
+        return;
+    } else {
+        return;
+    }
+
+    items.forEach((item, i) => item.classList.toggle('is-active', i === acActiveIndex));
+});
+
+// Cerrar el autocompletado al hacer click afuera
+document.addEventListener('click', (e) => {
+    if (autocompleteList && !e.target.closest('.search-wrapper')) {
+        closeAutocomplete();
+    }
 });
 
 // 7. Lógica de Sugerir Herramienta
@@ -555,6 +674,7 @@ function aplicarHistorial(term) {
     searchInput.value = term;
     searchQuery = term;
     filterAndSearch();
+    closeAutocomplete();
     document.getElementById('categorias').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -630,7 +750,69 @@ function initNavLinkHighlight() {
     sections.forEach(sec => observer.observe(sec));
 }
 
-// 16. Inicialización
+// 16. Contadores animados en el hero
+function animarContador(el, destino, duracionMs = 1400) {
+    const inicio = 0;
+    const inicioTime = performance.now();
+
+    function paso(ahora) {
+        const progreso = Math.min((ahora - inicioTime) / duracionMs, 1);
+        // Easing suave (ease-out) para que no se sienta mecánico
+        const eased = 1 - Math.pow(1 - progreso, 3);
+        const valorActual = Math.round(inicio + (destino - inicio) * eased);
+        el.textContent = valorActual.toLocaleString('es-AR');
+
+        if (progreso < 1) {
+            requestAnimationFrame(paso);
+        } else {
+            el.textContent = destino.toLocaleString('es-AR');
+        }
+    }
+
+    requestAnimationFrame(paso);
+}
+
+function initHeroCounters() {
+    const elTools = document.getElementById('stat-tools');
+    const elCategories = document.getElementById('stat-categories');
+    const elFree = document.getElementById('stat-free');
+    if (!elTools || !elCategories || !elFree) return;
+
+    const totalTools = tools.length;
+    const totalCategories = new Set(tools.map(t => t.category)).size;
+    const totalFree = tools.filter(t => !t.isPro).length;
+
+    elTools.setAttribute('data-target', totalTools);
+    elCategories.setAttribute('data-target', totalCategories);
+    elFree.setAttribute('data-target', totalFree);
+
+    let yaAnimado = false;
+    const heroStats = document.querySelector('.hero-stats');
+    if (!heroStats) return;
+
+    if (!('IntersectionObserver' in window)) {
+        animarContador(elTools, totalTools);
+        animarContador(elCategories, totalCategories);
+        animarContador(elFree, totalFree);
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !yaAnimado) {
+                yaAnimado = true;
+                animarContador(elTools, totalTools);
+                animarContador(elCategories, totalCategories);
+                animarContador(elFree, totalFree);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(heroStats);
+}
+
+// 17. Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     renderTools(tools);
     renderFavoritesSection();
@@ -639,6 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initStickyNav();
     initNavLinkHighlight();
+    initHeroCounters();
 });
 
 if ('serviceWorker' in navigator) {
