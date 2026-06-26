@@ -580,9 +580,18 @@ function initScrollReveal() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.01, rootMargin: '0px 0px -10% 0px' });
 
     elementos.forEach(el => observer.observe(el));
+
+    // Red de seguridad: si por algún motivo un elemento queda fuera de cualquier
+    // disparo (ventanas muy chicas, secciones más altas que el viewport, etc.),
+    // lo revelamos igual a los 1.5s para que nunca quede contenido invisible.
+    setTimeout(() => {
+        document.querySelectorAll('.scroll-reveal:not(.is-visible)').forEach(el => {
+            el.classList.add('is-visible');
+        });
+    }, 1500);
 }
 
 // 14. Navbar sticky: aparece luego de pasar el hero
