@@ -8,6 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="/manifest.json">
+
+    <!--
+        SCRIPT GLOBAL DE ADSENSE - Comentado hasta tener la cuenta aprobada.
+        Cuando Google te apruebe, descomentá esta línea y reemplazá ca-pub-TU_CODIGO_AQUI
+        por tu ID real de publisher (te lo da Google en tu panel de AdSense).
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-TU_CODIGO_AQUI" crossorigin="anonymous"></script>
+    -->
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
@@ -55,13 +63,29 @@
             <!-- Historial de búsquedas recientes -->
             <div id="history-chips" class="flex flex-wrap justify-center gap-2 mt-4 max-w-2xl mx-auto"></div>
 
-            <!-- AdSense Banner (discreto) -->
-            <div class="mt-8 bg-blue-700 p-4 rounded-lg max-w-md mx-auto">
-                <p class="text-sm text-gray-200">Publicidad</p>
-                <div class="bg-gray-200 h-20 flex items-center justify-center text-gray-700 rounded">
-                    [Banner de AdSense]
-                </div>
+            <!-- 
+                BLOQUE DE ADSENSE - Actualmente OCULTO porque la cuenta todavía no fue aprobada.
+                Google revisa el sitio para aprobar la cuenta, y mostrar placeholders o cajas
+                vacías de "Publicidad" puede perjudicar esa revisión. Por eso este bloque
+                queda comentado hasta el día que tengas tu código real de AdSense.
+
+                CUÁNDO TE APRUEBEN LA CUENTA:
+                1. Borrá las marcas ABRIR_ADSENSE y CERRAR_ADSENSE de las líneas de abajo
+                   (son las que activan/desactivan este bloque de comentario).
+                2. Reemplazá data-ad-client y data-ad-slot por los valores reales
+                   que te da Google en tu panel de AdSense.
+            -->
+            <!-- ABRIR_ADSENSE
+            <div class="mt-8 max-w-md mx-auto" id="adsense-banner-slot">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-TU_CODIGO_AQUI"
+                     data-ad-slot="TU_SLOT_AQUI"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+            CERRAR_ADSENSE -->
         </div>
     </header>
 
