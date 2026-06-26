@@ -11,9 +11,26 @@
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
+    <!-- Navbar Sticky (aparece al hacer scroll) -->
+    <nav id="sticky-nav" class="sticky-nav">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <a href="#top" class="nav-logo flex items-center gap-2 flex-shrink-0">
+                <span>🧭</span> TuDirectorioIA
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#categorias" class="nav-link">Categorías</a>
+                <a href="#tendencias" class="nav-link">Tendencias</a>
+                <a href="#favoritos" class="nav-link">Favoritos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            <button id="nav-dark-toggle" class="nav-link nav-toggle-btn rounded-full px-4 py-1.5 text-sm">🌙</button>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <header class= "hero-header text-white py-12 px-4 text-center">
+    <header id="top" class= "hero-header text-white py-12 px-4 text-center">
         <div class="container mx-auto">
+            <span class="hero-badge"><span class="dot"></span> Guía 2026 actualizada para Entre Ríos</span>
             <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
                 Potenciá tu trabajo y estudios con IA – Guía para Entre Ríos
             </h1>
@@ -24,16 +41,20 @@
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
                 <div class="relative w-full">
                     <input type="text" id="search-input" placeholder="Buscar herramienta (ej: 'diseño', 'texto')..." 
-                           class="w-full px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md">
+                           class="w-full px-6 py-3 rounded-full text-gray-800 focus:outline-none shadow-md">
                     <span class="absolute right-4 top-3 text-gray-400">🔍</span>
                 </div>
-                <button id="dark-mode-toggle" class="bg-blue-800 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-blue-900 transition-colors duration-300 whitespace-nowrap">
+                <button id="dark-mode-toggle" class="btn-press bg-blue-800 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-blue-900 transition-colors duration-300 whitespace-nowrap">
                     🌙 Modo Oscuro
                 </button>
-                <button id="suggest-tool-btn" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-700 transition-colors duration-300 whitespace-nowrap">
+                <button id="suggest-tool-btn" class="btn-press bg-green-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-700 transition-colors duration-300 whitespace-nowrap">
                     💡 Sugerir Herramienta
                 </button>
             </div>
+
+            <!-- Historial de búsquedas recientes -->
+            <div id="history-chips" class="flex flex-wrap justify-center gap-2 mt-4 max-w-2xl mx-auto"></div>
+
             <!-- AdSense Banner (discreto) -->
             <div class="mt-8 bg-blue-700 p-4 rounded-lg max-w-md mx-auto">
                 <p class="text-sm text-gray-200">Publicidad</p>
@@ -46,8 +67,27 @@
 
     <main class="container mx-auto px-4 py-8">
 
+        <!-- Sección Tendencias -->
+        <section id="tendencias" class="mb-12 scroll-reveal">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">🔥 Tendencias</h2>
+            <p class="text-gray-500 text-center mb-6">Las herramientas más destacadas del momento.</p>
+            <div id="trending-container" class="trend-scroller flex gap-5 overflow-x-auto pb-3">
+                <!-- Se generan dinámicamente con JS -->
+            </div>
+        </section>
+
+        <!-- Sección Favoritos del usuario -->
+        <section id="favoritos" class="mb-12 scroll-reveal">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">⭐ Tus Favoritos</h2>
+            <p class="text-gray-500 text-center mb-6">Las herramientas que guardaste para encontrar rápido.</p>
+            <div id="favorites-section">
+                <p class="favorites-empty-msg text-center text-gray-400 italic">Todavía no guardaste ninguna herramienta. Tocá la ⭐ en cualquier tarjeta para agregarla acá.</p>
+                <div id="favorites-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
         <!-- Categorías de Herramientas -->
-        <section class="mb-12">
+        <section id="categorias" class="mb-12 scroll-reveal">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Explorá por Categoría</h2>
             <div id="category-filters" class="flex flex-wrap justify-center gap-3 mb-8">
                 <!-- Los botones de categoría se generarán aquí con JavaScript -->
@@ -82,7 +122,7 @@
 </section>
 
         <!-- Sección FAQ (Preguntas Frecuentes) -->
-        <section class="mb-12">
+        <section id="faq" class="mb-12 scroll-reveal">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Preguntas Frecuentes</h2>
             <div class="space-y-4 max-w-3xl mx-auto">
                 <!-- FAQ Item 1 -->
@@ -149,12 +189,13 @@
                     <div class="faq-answer hidden p-5 pt-0 text-gray-600 border-t border-gray-100">
                         <p class="mb-3">Las herramientas marcadas como <strong>PRO</strong> son soluciones avanzadas diseñadas para automatizar flujos de trabajo complejos, ahorrándote mucho tiempo en tareas de análisis, programación o edición técnica.</p>
                         <p><strong>¿Necesitás ser experto?</strong> ¡Para nada! Aunque son más potentes, muchas tienen interfaces muy intuitivas. La mayoría incluye asistentes de IA que te guían paso a paso, por lo que no necesitás conocimientos técnicos complejos para empezar a aprovecharlas hoy mismo.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Sección "¿Por dónde empezar?" -->
-        <section class="bg-white p-8 rounded-lg shadow-md mb-12">
+        <section class="bg-white p-8 rounded-lg shadow-md mb-12 scroll-reveal">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">¿Por dónde empezar?</h2>
             <div class="space-y-6 text-lg text-gray-700">
                 <p>
@@ -170,7 +211,7 @@
         </section>
 
         <!-- Espacio para Enlaces de Afiliados (discreto) -->
-        <section class="bg-white p-8 rounded-lg shadow-md text-center">
+        <section class="bg-white p-8 rounded-lg shadow-md text-center scroll-reveal">
     <h2 class="text-2xl font-bold text-gray-800 mb-4">Recursos para potenciarte</h2>
     <p class="text-gray-700 mb-6">Plataformas seleccionadas para aprender y gestionar tus proyectos.</p>
     
@@ -200,17 +241,54 @@
 
     </main>
 
-    <footer class="mt-16 py-8 border-t border-gray-200 text-center">
-    <div class="container mx-auto px-4">
-        <p class="text-gray-600 mb-2">© 2026 TuDirectorioIA - Creado con ❤️ en Paraná, Entre Ríos.  C.E.Militello 
-                    Todos Los Derechos Reservados
-        </p>
-        <nav class="flex justify-center space-x-4">
-            <a href="privacidad.html" class="text-sm text-blue-600 hover:underline">Política de Privacidad</a>
-            <a href="blog.html" class="text-blue-600 font-bold hover:underline">Blog IA</a>
-            <!-- Puedes agregar más enlaces aquí en el futuro -->
-        </nav>
-    </div>
+    <footer class="site-footer mt-16">
+        <div class="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div>
+                <h4 class="flex items-center gap-2 text-lg">🧭 TuDirectorioIA</h4>
+                <p class="text-sm leading-relaxed">Tu biblioteca de herramientas de IA fáciles de usar para residentes de Paraná y Entre Ríos. Sin tecnicismos, con buena onda.</p>
+                <div class="flex gap-3 mt-4">
+                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon" aria-label="WhatsApp">💬</a>
+                    <a href="#" class="social-icon" aria-label="Email">✉️</a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Categorías</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#categorias">Trabajo Remoto</a></li>
+                    <li><a href="#categorias">Estudios/Educación</a></li>
+                    <li><a href="#categorias">Tareas del Hogar</a></li>
+                    <li><a href="#categorias">Creatividad/Diseño</a></li>
+                    <li><a href="#categorias">IA Avanzada</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Enlaces</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#tendencias">Tendencias</a></li>
+                    <li><a href="#favoritos">Mis Favoritos</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="blog.html">Blog IA</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>📍 Paraná, Entre Ríos</li>
+                    <li>✉️ contacto@tudirectorioia.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-2 text-sm">
+                <p>© 2026 TuDirectorioIA - Creado con ❤️ en Paraná, Entre Ríos. C.E.Militello — Todos Los Derechos Reservados</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

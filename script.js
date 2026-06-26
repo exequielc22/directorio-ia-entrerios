@@ -330,39 +330,49 @@ const tools = [
 ];
 
 // 2. Función para renderizar las tarjetas
-function renderTools(filteredTools) {
-    const container = document.getElementById('tool-cards-container');
-    container.innerHTML = ''; 
+function renderTools(filteredTools, containerId = 'tool-cards-container') {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (filteredTools.length === 0) {
+        container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-8">No encontramos herramientas con ese criterio. Probá con otra palabra o categoría.</p>`;
+        return;
+    }
 
     // Recuperamos los favoritos actuales
     const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
     filteredTools.forEach((tool, index) => {
         // Lógica de etiquetas
-        const proLabel = tool.isPro ? 
-            '<span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">PRO</span>' : '';
-        
+        const proLabel = tool.isPro ?
+            '<span class="badge-pro">⚡ PRO</span>' : '';
+
         // Verificamos si es favorito para elegir el icono
         const esFavorito = favoritos.includes(tool.name);
         const favButton = `
-            <button onclick="toggleFavorito('${tool.name}')" class="absolute top-2 right-2 text-xl focus:outline-none transition-transform hover:scale-125">
+            <button onclick="toggleFavorito('${tool.name}', this)" class="fav-btn ${esFavorito ? 'is-fav' : ''}" aria-label="Marcar como favorito">
                 ${esFavorito ? '⭐' : '☆'}
             </button>
         `;
 
         const card = document.createElement('div');
-        card.className = "relative bg-white p-6 rounded-lg shadow-md border border-gray-200 fade-in";
-        card.style.animationDelay = `${index * 0.1}s`;
+        card.className = "tool-card";
+        card.style.animationDelay = `${(index % 12) * 0.06}s`;
 
         card.innerHTML = `
             ${proLabel}
             ${favButton}
-            <div class="text-4xl mb-4 mt-4">${tool.icon}</div>
-            <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
-            <p class="text-gray-600 mb-4">${tool.description}</p>
-            <a href="${tool.link}" target="_blank" class="text-blue-600 font-semibold hover:underline">Probar herramienta →</a>
+            <div class="tool-card-inner">
+                <div class="tool-icon-badge">${tool.icon}</div>
+                <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
+                <p class="text-gray-600 mb-4">${tool.description}</p>
+                <a href="${tool.link}" target="_blank" rel="noopener" class="tool-try-btn">
+                    Probar herramienta <span class="arrow">→</span>
+                </a>
+            </div>
         `;
-        
+
         container.appendChild(card);
     });
 }
@@ -448,29 +458,178 @@ faqQuestions.forEach(question => {
 
 // 9. Lógica de Modo Oscuro
 const darkModeToggle = document.getElementById('dark-mode-toggle');
+const navDarkToggle = document.getElementById('nav-dark-toggle');
 const body = document.body;
+
+function syncDarkModeButtons(isDark) {
+    if (darkModeToggle) darkModeToggle.innerText = isDark ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+    if (navDarkToggle) navDarkToggle.innerText = isDark ? '☀️' : '🌙';
+}
 
 // Verificar preferencia guardada
 if (localStorage.getItem('dark-mode') === 'enabled') {
     body.classList.add('dark-mode');
-    darkModeToggle.innerText = '☀️ Modo Claro';
+}
+syncDarkModeButtons(body.classList.contains('dark-mode'));
+
+function handleDarkModeToggle() {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+    syncDarkModeButtons(isDark);
 }
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('dark-mode', 'enabled');
-        darkModeToggle.innerText = '☀️ Modo Claro';
+darkModeToggle.addEventListener('click', handleDarkModeToggle);
+if (navDarkToggle) navDarkToggle.addEventListener('click', handleDarkModeToggle);
+
+// 10. Sección de Favoritos del usuario
+function renderFavoritesSection() {
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    const favSection = document.getElementById('favorites-section');
+    const favTools = tools.filter(t => favoritos.includes(t.name));
+
+    if (!favSection) return;
+
+    if (favTools.length === 0) {
+        favSection.classList.add('is-empty');
+        document.getElementById('favorites-container').innerHTML = '';
     } else {
-        localStorage.setItem('dark-mode', 'disabled');
-        darkModeToggle.innerText = '🌙 Modo Oscuro';
+        favSection.classList.remove('is-empty');
+        renderTools(favTools, 'favorites-container');
     }
+}
+
+// 11. Sección de Tendencias (herramientas PRO + algunas destacadas)
+function renderTrending() {
+    const container = document.getElementById('trending-container');
+    if (!container) return;
+
+    const destacadas = tools.filter(t => t.isPro).slice(0, 8);
+    container.innerHTML = '';
+
+    destacadas.forEach((tool, index) => {
+        const card = document.createElement('a');
+        card.href = tool.link;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'trend-card block';
+        card.innerHTML = `
+            <div class="tool-card h-full">
+                <div class="tool-card-inner flex flex-col">
+                    <span class="trend-rank mb-2">#${index + 1}</span>
+                    <div class="tool-icon-badge">${tool.icon}</div>
+                    <h3 class="font-bold mb-1">${tool.name}</h3>
+                    <p class="text-sm text-gray-500 clamp-3-lines">${tool.description}</p>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// 12. Historial de búsquedas recientes (chips bajo el buscador del hero)
+function getHistorial() {
+    return JSON.parse(localStorage.getItem('historial-busquedas')) || [];
+}
+
+function guardarEnHistorial(termino) {
+    if (!termino || termino.trim().length < 2) return;
+    let historial = getHistorial();
+    historial = historial.filter(h => h.toLowerCase() !== termino.toLowerCase());
+    historial.unshift(termino);
+    historial = historial.slice(0, 6);
+    localStorage.setItem('historial-busquedas', JSON.stringify(historial));
+    renderHistorial();
+}
+
+function renderHistorial() {
+    const cont = document.getElementById('history-chips');
+    if (!cont) return;
+    const historial = getHistorial();
+    cont.innerHTML = historial.map(term =>
+        `<button class="history-chip btn-press" onclick="aplicarHistorial('${term.replace(/'/g, "\\'")}')">🕘 ${term}</button>`
+    ).join('');
+}
+
+function aplicarHistorial(term) {
+    searchInput.value = term;
+    searchQuery = term;
+    filterAndSearch();
+    document.getElementById('categorias').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Guardamos en el historial cuando el usuario deja de tipear (debounce simple)
+let historialTimeout;
+searchInput.addEventListener('input', () => {
+    clearTimeout(historialTimeout);
+    historialTimeout = setTimeout(() => guardarEnHistorial(searchInput.value), 900);
 });
 
-// 10. Inicialización
+// 13. Animación de aparición al hacer scroll (IntersectionObserver)
+function initScrollReveal() {
+    const elementos = document.querySelectorAll('.scroll-reveal');
+    if (!('IntersectionObserver' in window)) {
+        elementos.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    elementos.forEach(el => observer.observe(el));
+}
+
+// 14. Navbar sticky: aparece luego de pasar el hero
+function initStickyNav() {
+    const nav = document.getElementById('sticky-nav');
+    const heroHeader = document.querySelector('.hero-header');
+    if (!nav || !heroHeader) return;
+
+    const onScroll = () => {
+        const heroBottom = heroHeader.getBoundingClientRect().bottom;
+        nav.classList.toggle('is-visible', heroBottom < 0);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+}
+
+// 15. Resaltar el link activo de la navbar según la sección visible
+function initNavLinkHighlight() {
+    const sections = ['categorias', 'tendencias', 'favoritos', 'faq']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+    const navLinks = document.querySelectorAll('.sticky-nav .nav-link[href^="#"]');
+    if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                });
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(sec => observer.observe(sec));
+}
+
+// 16. Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     renderTools(tools);
+    renderFavoritesSection();
+    renderTrending();
+    renderHistorial();
+    initScrollReveal();
+    initStickyNav();
+    initNavLinkHighlight();
 });
 
 if ('serviceWorker' in navigator) {
@@ -481,21 +640,33 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-function toggleFavorito(nombreHerramienta) {
+function toggleFavorito(nombreHerramienta, btnEl) {
     let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    
-    if (favoritos.includes(nombreHerramienta)) {
-        // Si ya está, lo eliminamos
+    const yaEsFavorito = favoritos.includes(nombreHerramienta);
+
+    if (yaEsFavorito) {
         favoritos = favoritos.filter(item => item !== nombreHerramienta);
     } else {
-        // Si no está, lo agregamos
         favoritos.push(nombreHerramienta);
     }
-    
+
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-    
-    // IMPORTANTE: Volvemos a renderizar para que el icono cambie de ☆ a ⭐
-    renderTools(tools); 
+
+    // Actualizamos visualmente todos los botones de favorito que correspondan a esta herramienta,
+    // sin tener que re-renderizar toda la grilla (evita parpadeos y pérdida de scroll).
+    document.querySelectorAll('.fav-btn').forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${nombreHerramienta}'`)) {
+            const esFavAhora = !yaEsFavorito;
+            btn.innerHTML = esFavAhora ? '⭐' : '☆';
+            btn.classList.toggle('is-fav', esFavAhora);
+            if (esFavAhora) {
+                btn.classList.remove('is-fav');
+                requestAnimationFrame(() => btn.classList.add('is-fav'));
+            }
+        }
+    });
+
+    renderFavoritesSection();
 }
 
 function buscarHerramienta() {

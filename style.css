@@ -5,6 +5,8 @@
     --bg-gray: #F8FAFC;
     --success-green: #10B981;
     --text-gray: #4B5563;
+    --accent-gold: #F59E0B;
+    --card-radius: 18px;
 }
 
 body {
@@ -13,14 +15,193 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Animaciones suaves para las tarjetas */
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ======================================================
+   PARTE 1: TARJETAS PREMIUM
+   ====================================================== */
+
 .tool-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.35s ease;
+    will-change: transform;
+}
+
+/* Halo de gradiente que aparece detrás de la tarjeta al hacer hover */
+.tool-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--card-radius);
+    background: linear-gradient(135deg, var(--primary-blue), var(--success-green));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.35s ease;
 }
 
 .tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 20px 35px -10px rgba(59, 130, 246, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+/* Contenedor interno para que el halo no tape el contenido */
+.tool-card-inner {
+    background: #ffffff;
+    border-radius: calc(var(--card-radius) - 1px);
+    height: 100%;
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* Icono dentro de un círculo con fondo de color, con leve animación al hover */
+.tool-icon-badge {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    margin-bottom: 1rem;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease;
+}
+
+.tool-card:hover .tool-icon-badge {
+    transform: rotate(-8deg) scale(1.12);
+    background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+}
+
+/* Botón "Probar" rediseñado, con flecha animada */
+.tool-try-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.tool-try-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tool-card:hover .tool-try-btn .arrow {
+    transform: translateX(5px);
+}
+
+.tool-try-btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+.tool-card:hover .tool-try-btn::after {
+    width: 100%;
+}
+
+/* Badge PRO con brillo animado */
+.badge-pro {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: linear-gradient(110deg, #F59E0B, #FBBF24, #F59E0B);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px -2px rgba(245, 158, 11, 0.5);
+    overflow: hidden;
+}
+
+.badge-pro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    transform: skewX(-20deg);
+    animation: badgeShine 2.6s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+    0% { left: -75%; }
+    35% { left: 130%; }
+    100% { left: 130%; }
+}
+
+/* Estrella de favoritos mejorada */
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.fav-btn:hover {
+    transform: scale(1.15);
+}
+
+.fav-btn.is-fav {
+    animation: favPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes favPop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4) rotate(-10deg); }
+    70% { transform: scale(0.9) rotate(5deg); }
+    100% { transform: scale(1) rotate(0); }
 }
 
 /* Animación Fade-In */
@@ -39,10 +220,75 @@ body {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
+/* ======================================================
+   PARTE 2: MICROINTERACCIONES
+   ====================================================== */
+
+/* Aparición al hacer scroll (controlada por IntersectionObserver en script.js) */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Estilo para los botones de categoría activos */
 .category-btn.active {
     background-color: var(--primary-blue);
     color: white;
+}
+
+.category-btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px -6px rgba(59, 130, 246, 0.35);
+}
+
+.category-btn:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+/* Buscador con efecto glow al enfocar */
+#search-input {
+    transition: box-shadow 0.4s ease, transform 0.2s ease;
+}
+
+#search-input:focus {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35), 0 0 28px 4px rgba(59, 130, 246, 0.55);
+    transform: translateY(-1px);
+}
+
+/* Animación general de "press" para botones principales */
+.btn-press {
+    transition: transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.btn-press:active {
+    transform: scale(0.95);
+}
+
+/* Chips de historial de búsqueda */
+.history-chip {
+    animation: chipIn 0.3s ease-out;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.history-chip:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes chipIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Optimización para móviles (Mobile-First) */
@@ -195,7 +441,7 @@ body.dark-mode {
     padding: 2rem;
 }
 
-/* Capa oscura para que el texto sea legible sobre la imagen */
+/* Capa con gradiente para que el texto sea legible sobre la imagen */
 .hero-header::before {
     content: '';
     position: absolute;
@@ -203,8 +449,18 @@ body.dark-mode {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* 40% de opacidad oscura */
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 64, 175, 0.55) 55%, rgba(15, 23, 42, 0.82) 100%);
     z-index: 1;
+}
+
+/* Brillo ambiental sutil detrás del contenido del hero */
+.hero-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 130, 246, 0.35), transparent 70%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Asegurar que el contenido del hero esté sobre la capa oscura */
@@ -229,4 +485,212 @@ body.dark-mode {
 
 #chat-response {
     color: #0a58df;
+}
+
+/* ======================================================
+   PARTE 3: ACABADO PREMIUM
+   ====================================================== */
+
+/* --- Navbar sticky --- */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(-100%);
+    transition: transform 0.35s ease;
+}
+
+.sticky-nav.is-visible {
+    transform: translateY(0);
+}
+
+.sticky-nav .nav-link {
+    color: #CBD5E1;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.sticky-nav .nav-link:hover,
+.sticky-nav .nav-link.active {
+    color: #ffffff;
+}
+
+.sticky-nav .nav-logo {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.nav-toggle-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-toggle-btn:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Hero badge moderno --- */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success-green);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* --- Historial de búsqueda (chips bajo el buscador) --- */
+.history-chip {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.history-chip:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+/* --- Sección Tendencias --- */
+.trend-card {
+    flex: 0 0 auto;
+    width: 230px;
+    scroll-snap-align: start;
+}
+
+.trend-rank {
+    font-size: 2.25rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-blue), #93C5FD);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+}
+
+.trend-scroller {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+/* Truncado de texto a 3 líneas (line-clamp no está disponible en Tailwind 2.x) */
+.clamp-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- Sección Favoritos --- */
+#favorites-section.is-empty .favorites-empty-msg {
+    display: block;
+}
+
+.favorites-empty-msg {
+    display: none;
+}
+
+/* --- Footer ampliado --- */
+.site-footer {
+    background: var(--dark-blue);
+    color: #CBD5E1;
+}
+
+.site-footer h4 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+}
+
+.site-footer a {
+    color: #CBD5E1;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+}
+
+.site-footer a:hover {
+    color: #ffffff;
+    padding-left: 4px;
+}
+
+.site-footer .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.social-icon:hover {
+    background: var(--primary-blue);
+    transform: translateY(-3px);
+}
+
+/* --- Soporte Modo Oscuro para elementos nuevos --- */
+.dark-mode .tool-card {
+    background: #1E293B;
+    border-color: #334155;
+}
+
+.dark-mode .tool-card-inner {
+    background: #1E293B;
+}
+
+.dark-mode .tool-icon-badge {
+    background: linear-gradient(135deg, #334155, #1E293B);
+}
+
+.dark-mode .fav-btn {
+    background: rgba(30, 41, 59, 0.85);
+}
+
+.dark-mode .trend-card .tool-card,
+.dark-mode .site-footer {
+    background: #0F172A;
+}
+
+.dark-mode #search-input {
+    background-color: #1E293B;
+    color: #F1F5F9;
 }
