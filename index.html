@@ -29,6 +29,7 @@
                 <a href="#categorias" class="nav-link">Categorías</a>
                 <a href="#tendencias" class="nav-link">Tendencias</a>
                 <a href="#favoritos" class="nav-link">Favoritos</a>
+                <a href="#comparador" class="nav-link">Comparador</a>
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
             <button id="nav-dark-toggle" class="nav-link nav-toggle-btn rounded-full px-4 py-1.5 text-sm">🌙</button>
@@ -125,6 +126,37 @@
             <div id="favorites-section">
                 <p class="favorites-empty-msg text-center text-gray-400 italic">Todavía no guardaste ninguna herramienta. Tocá la ⭐ en cualquier tarjeta para agregarla acá.</p>
                 <div id="favorites-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- Sección Comparador de Herramientas -->
+        <section id="comparador" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center scroll-reveal">⚖️ Comparador de Herramientas</h2>
+            <p class="text-gray-500 text-center mb-6">Elegí dos o tres herramientas y mirá lado a lado cuál te conviene más.</p>
+
+            <!-- Comparaciones armadas (accesos rápidos) -->
+            <div id="curated-comparisons" class="flex flex-wrap justify-center gap-3 mb-8"></div>
+
+            <!-- Contenedor unificado: selectores + resultado comparten el mismo ancho máximo,
+                 para que ambos bloques queden alineados y no se vea un hueco vacío de un lado -->
+            <div class="max-w-5xl mx-auto">
+                <!-- Selector libre de herramientas a comparar -->
+                <div class="bg-white p-5 rounded-xl shadow-md mb-6">
+                    <p class="text-sm font-semibold text-gray-600 mb-3">O armá tu propia comparación (elegí entre 2 y 3):</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <select id="compare-select-1" class="compare-select flex-1 border rounded-lg p-2 text-sm"></select>
+                        <select id="compare-select-2" class="compare-select flex-1 border rounded-lg p-2 text-sm"></select>
+                        <select id="compare-select-3" class="compare-select flex-1 border rounded-lg p-2 text-sm">
+                            <option value="">+ Agregar una tercera (opcional)</option>
+                        </select>
+                    </div>
+                    <button id="compare-btn" class="btn-press bg-blue-600 text-white w-full sm:w-auto px-6 py-2 rounded-lg font-semibold mt-4 hover:bg-blue-700 transition-colors">
+                        Comparar
+                    </button>
+                </div>
+
+                <!-- Resultado de la comparación -->
+                <div id="comparison-result" class="overflow-x-auto"></div>
             </div>
         </section>
 
@@ -311,6 +343,7 @@
                 <ul class="space-y-2 text-sm">
                     <li><a href="#tendencias">Tendencias</a></li>
                     <li><a href="#favoritos">Mis Favoritos</a></li>
+                    <li><a href="#comparador">Comparador</a></li>
                     <li><a href="#faq">Preguntas Frecuentes</a></li>
                     <li><a href="privacidad.html">Política de Privacidad</a></li>
                     <li><a href="blog.html">Blog IA</a></li>
