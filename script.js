@@ -358,11 +358,13 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
         const proLabel = tool.isPro ?
             '<span class="badge-pro">⚡ PRO</span>' : '';
 
-        // Badge de precio: si ya es PRO no mostramos "Freemium" aparte (sería redundante,
-        // el badge PRO ya comunica que no es 100% gratuita). Solo mostramos "Gratis"
-        // para las que no son PRO, dejando el badge PRO solo para las que sí lo son.
+        // Badge de precio: "PRO" indica complejidad/potencia, no necesariamente costo.
+        // Las herramientas PRO suelen tener créditos diarios gratis, así que mostramos
+        // PRO + Freemium juntas (son dos datos distintos: qué tan avanzada es,
+        // y qué tan accesible es el precio). Las que no son PRO muestran solo "Gratis".
         const pricingLabel = tool.isPro ?
-            '' : '<span class="badge-pricing is-free">Gratis</span>';
+            '<span class="badge-pricing is-freemium">Freemium</span>' :
+            '<span class="badge-pricing is-free">Gratis</span>';
 
         // Color por categoría
         const colorSlug = categoryColorMap[tool.category] || '';
@@ -812,7 +814,115 @@ function initHeroCounters() {
     observer.observe(heroStats);
 }
 
-// 17. Inicialización
+// 18. Red de nodos animada en el hero (estilo Vercel/OpenAI)
+function initHeroNetwork() {
+    const canvas = document.getElementById('hero-network');
+    const heroHeader = document.querySelector('.hero-header');
+    if (!canvas || !heroHeader) return;
+
+    const ctx = canvas.getContext('2d');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width, height, nodos = [];
+    let animando = true;
+
+    // Menos nodos en pantallas chicas para no afectar el rendimiento en mobile
+    function calcularCantidadNodos() {
+        const area = width * height;
+        const densidad = window.innerWidth < 640 ? 14000 : 9000;
+        return Math.min(90, Math.max(20, Math.round(area / densidad)));
+    }
+
+    function crearNodos() {
+        const cantidad = calcularCantidadNodos();
+        nodos = Array.from({ length: cantidad }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.6 + 0.8
+        }));
+    }
+
+    function resize() {
+        const rect = heroHeader.getBoundingClientRect();
+        width = canvas.width = rect.width;
+        height = canvas.height = rect.height;
+        crearNodos();
+    }
+
+    const DISTANCIA_CONEXION = 130;
+
+    function dibujar() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Movemos cada nodo y lo hacemos "rebotar" en los bordes
+        nodos.forEach(n => {
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x <= 0 || n.x >= width) n.vx *= -1;
+            if (n.y <= 0 || n.y >= height) n.vy *= -1;
+        });
+
+        // Líneas entre nodos cercanos (con opacidad según distancia)
+        for (let i = 0; i < nodos.length; i++) {
+            for (let j = i + 1; j < nodos.length; j++) {
+                const dx = nodos[i].x - nodos[j].x;
+                const dy = nodos[i].y - nodos[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < DISTANCIA_CONEXION) {
+                    const opacidad = (1 - dist / DISTANCIA_CONEXION) * 0.35;
+                    ctx.strokeStyle = `rgba(147, 197, 253, ${opacidad})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(nodos[i].x, nodos[i].y);
+                    ctx.lineTo(nodos[j].x, nodos[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Nodos (puntos brillantes)
+        nodos.forEach(n => {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(191, 219, 254, 0.85)';
+            ctx.fill();
+        });
+
+        if (animando) requestAnimationFrame(dibujar);
+    }
+
+    resize();
+
+    // Recalculamos una vez más cuando todo (fuentes, imagen de fondo) terminó de cargar,
+    // por si el alto del hero cambió levemente respecto a la primera medición
+    window.addEventListener('load', resize, { once: true });
+
+    // Si el usuario prefiere menos movimiento, dibujamos un solo frame estático y no animamos
+    if (prefersReducedMotion) {
+        dibujar();
+        animando = false;
+    } else {
+        requestAnimationFrame(dibujar);
+    }
+
+    // Pausamos la animación cuando la pestaña no está visible, para no gastar batería/CPU
+    document.addEventListener('visibilitychange', () => {
+        animando = !document.hidden && !prefersReducedMotion;
+        if (animando) requestAnimationFrame(dibujar);
+    });
+
+    // Recalculamos en resize, con un pequeño debounce para no recrear nodos en cada pixel
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 250);
+    });
+}
+
+// 19. Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     renderTools(tools);
     renderFavoritesSection();
@@ -822,6 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyNav();
     initNavLinkHighlight();
     initHeroCounters();
+    initHeroNetwork();
 });
 
 if ('serviceWorker' in navigator) {
@@ -861,39 +972,307 @@ function toggleFavorito(nombreHerramienta, btnEl) {
     renderFavoritesSection();
 }
 
-function buscarHerramienta() {
-    const input = document.getElementById('chat-input').value.toLowerCase();
-    const responseElement = document.getElementById('chat-response');
-    
-    // Diccionario de equivalencias (para que "fotos" sea igual a "imagen")
-    const dic = { "fotos": "imagen", "foto": "imagen", "codigo": "IA Avanzada", "escribir": "texto" };
-    const query = dic[input] || input;
+// ======================================================
+// ASISTENTE DEL CHAT FLOTANTE (mejorado, sin servidor)
+// ======================================================
 
-    const sugerencias = tools.filter(t => 
-        t.category.toLowerCase().includes(query) || 
-        t.description.toLowerCase().includes(query) || 
-        t.name.toLowerCase().includes(query)
+// Diccionario de sinónimos: cada palabra del mensaje del usuario se "traduce"
+// a un término que sí aparece en nuestras herramientas, antes de buscar.
+const sinonimosChat = {
+    "foto": "imagen", "fotos": "imagen", "fotografia": "imagen", "fotografía": "imagen",
+    "imagenes": "imagen", "imágenes": "imagen", "dibujar": "imagen", "dibujo": "imagen",
+    "codigo": "programación", "código": "programación", "programar": "programación",
+    "programacion": "programación", "developer": "programación", "programador": "programación",
+    "escribir": "texto", "redactar": "texto", "redaccion": "texto", "redacción": "texto",
+    "tarea": "tareas", "tareas del hogar": "Tareas del Hogar",
+    "estudiar": "estudios", "tarea de la facultad": "estudios", "facultad": "estudios",
+    "universidad": "estudios", "colegio": "estudios", "escuela": "estudios", "examen": "estudios",
+    "resumen": "estudios", "apuntes": "estudios",
+    "trabajo": "trabajo remoto", "laburo": "trabajo remoto", "oficina": "trabajo remoto",
+    "limpiar": "Tareas del Hogar", "limpieza": "Tareas del Hogar", "casa": "Tareas del Hogar",
+    "diseñar": "diseño", "disenar": "diseño", "diseño grafico": "diseño", "diseno": "diseño",
+    "traducir": "traductor", "traduccion": "traductor", "traducción": "traductor", "idioma": "traductor",
+    "reunion": "reuniones", "reunión": "reuniones", "zoom": "reuniones", "meet": "reuniones",
+    "presentacion": "presentación", "ppt": "presentación", "diapositivas": "presentación", "powerpoint": "presentación",
+    "gratis": "gratis", "free": "gratis", "barato": "gratis", "sin pagar": "gratis",
+    "video": "video", "videos": "video", "editar video": "video",
+    "voz": "audio", "audio": "audio", "transcribir": "audio", "transcripcion": "audio",
+    "chatbot": "asistente", "asistente virtual": "asistente", "agente": "asistente",
+    "automatizar": "automatización", "automatizacion": "automatización", "automatización": "automatización",
+    "organizar": "organización", "planificar": "organización", "calendario": "organización",
+    "comida": "Tareas del Hogar", "cocinar": "Tareas del Hogar", "receta": "Tareas del Hogar",
+    "matematica": "estudios", "matemática": "estudios", "matematicas": "estudios", "ciencia": "estudios",
+};
+
+// Preguntas frecuentes con respuesta directa (no necesitan buscar herramientas).
+// Cada entrada tiene palabras-disparadoras y una respuesta fija.
+const faqChat = [
+    {
+        triggers: ["que es la ia", "qué es la ia", "que es la inteligencia artificial", "qué es la inteligencia artificial"],
+        respuesta: "La Inteligencia Artificial es software que puede entender pedidos en lenguaje natural y generar texto, imágenes o respuestas. No es magia: es una herramienta más, como una calculadora muy avanzada. 🤖"
+    },
+    {
+        triggers: ["tengo que pagar", "es gratis", "cuesta", "precio", "cuanto cuesta", "cuánto cuesta"],
+        respuesta: "La mayoría de las herramientas del directorio tienen una versión gratuita. Las que ves con la etiqueta <strong>PRO</strong> son más potentes y tienen créditos diarios gratis para probarlas; algunas además son <strong>Freemium</strong>, es decir que podés usarlas gratis con límites y pagar solo si necesitás más. 💰"
+    },
+    {
+        triggers: ["la ia me va a reemplazar", "me va a quitar el trabajo", "reemplazar mi trabajo", "perder mi trabajo"],
+        respuesta: "Más que reemplazar, la IA suele ser una aliada: ayuda a hacer tareas repetitivas más rápido para que tengas tiempo para lo que realmente importa. Las personas que aprenden a usarla suelen ser más productivas, no reemplazadas. 💪"
+    },
+    {
+        triggers: ["es seguro", "puedo confiar", "mis datos", "privacidad", "informacion personal", "información personal"],
+        respuesta: "Como con cualquier sitio web, evitá compartir datos muy sensibles (contraseñas, tarjetas) con un chat de IA. Para ideas, redacción y consultas generales es totalmente seguro usarlas. 🔒"
+    },
+    {
+        triggers: ["es verdad", "es cierto", "confiable", "se equivoca", "alucina", "inventa"],
+        respuesta: "Las IA pueden cometer errores o \"inventar\" datos, así que siempre conviene chequear información importante (fechas, cifras, datos legales) en otra fuente antes de usarla. 🔍"
+    },
+    {
+        triggers: ["que es pro", "qué es pro", "etiqueta pro", "que significa pro", "qué significa pro"],
+        respuesta: "La etiqueta <strong>PRO</strong> no significa que sea de pago: indica que la herramienta es más avanzada o compleja de usar, generalmente para tareas más técnicas. La mayoría de estas tienen créditos diarios gratis, por eso también suelen tener la etiqueta <strong>Freemium</strong>. 🧠"
+    },
+    {
+        triggers: ["como empiezo", "cómo empiezo", "por donde empiezo", "por dónde empiezo", "soy nuevo", "no sé nada de ia", "no se nada de ia"],
+        respuesta: "¡Arrancá simple! Probá ChatGPT con un pedido cotidiano, como \"ayudame a organizar mi semana\". Después explorá las categorías de arriba según lo que necesites: trabajo, estudio, hogar o creatividad. 🚀"
+    },
+    {
+        triggers: ["quien hizo esta pagina", "quién hizo esta página", "quien creo este sitio", "quién creó este sitio", "de donde es esto", "de dónde es esto"],
+        respuesta: "Este directorio fue creado en Paraná, Entre Ríos, pensado para que cualquier persona de la zona encuentre herramientas de IA fáciles de usar para el día a día. 📍"
+    },
+    {
+        triggers: ["como guardo favoritos", "cómo guardo favoritos", "como marco favoritos", "que es la estrella", "qué es la estrella", "para que sirve la estrella", "para qué sirve la estrella"],
+        respuesta: "Tocá la ⭐ en la esquina de cualquier tarjeta para guardarla en tu sección de <strong>Favoritos</strong>. Se guarda en este navegador, así que la próxima vez que entres seguirá ahí. 💾"
+    },
+    {
+        triggers: ["como sugiero una herramienta", "cómo sugiero una herramienta", "quiero agregar una herramienta", "conozco una ia", "falta una herramienta", "agregar herramienta"],
+        respuesta: "¡Buenísimo! Tocá el botón <strong>💡 Sugerir Herramienta</strong> arriba del buscador, completá el formulario y la revisamos para sumarla al directorio. 🙌"
+    },
+    {
+        triggers: ["que categorias hay", "qué categorías hay", "que secciones hay", "qué secciones hay", "que tipos de herramientas hay", "qué tipos de herramientas hay"],
+        respuesta: "Tenemos estas categorías: <strong>Trabajo Remoto</strong>, <strong>Estudios/Educación</strong>, <strong>Tareas del Hogar</strong>, <strong>Creatividad/Diseño</strong>, <strong>Trámites y Consultas</strong> e <strong>IA Avanzada</strong>. Podés filtrar por cualquiera arriba del listado. 🗂️"
+    },
+    {
+        triggers: ["cual es la diferencia entre chatgpt y", "cuál es la diferencia entre chatgpt y", "chatgpt o", "que diferencia hay", "qué diferencia hay"],
+        respuesta: "Cada herramienta tiene su fuerte: ChatGPT es muy versátil para texto e ideas, pero hay otras más especializadas (por ejemplo Canva para diseño, o DeepL para traducción). Te conviene elegir según la tarea puntual que necesitás resolver. 🎯"
+    },
+    {
+        triggers: ["como activo el modo oscuro", "cómo activo el modo oscuro", "modo oscuro", "modo nocturno", "tema oscuro"],
+        respuesta: "Tocá el botón 🌙 que está junto al buscador (o el ícono de la luna en la barra de navegación cuando hacés scroll) para activar o desactivar el modo oscuro. 🌚"
+    },
+    {
+        triggers: ["las herramientas estan en español", "las herramientas están en español", "tengo que saber ingles", "tengo que saber inglés", "se puede usar en español"],
+        respuesta: "La mayoría funciona perfectamente en español, aunque algunas interfaces pueden mostrarse en inglés al principio — generalmente podés cambiar el idioma desde la configuración de cada herramienta. 🌐"
+    }
+];
+
+// Saludos y agradecimientos: respuestas cortas para que el chat se sienta natural
+const saludos = ["hola", "buenas", "que tal", "qué tal", "buen dia", "buen día", "buenas tardes", "buenas noches", "hey"];
+const agradecimientos = ["gracias", "muchas gracias", "genial gracias", "perfecto gracias", "dale gracias"];
+const despedidas = ["chau", "adios", "adiós", "nos vemos", "hasta luego"];
+
+function normalizarTexto(str) {
+    return str
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // sin tildes, para comparar mejor
+}
+
+// Aplica sinónimos palabra por palabra (no a la frase completa, así detecta
+// términos dentro de preguntas largas, no solo inputs de una sola palabra).
+function aplicarSinonimos(texto) {
+    let resultado = texto;
+    Object.keys(sinonimosChat).forEach(clave => {
+        if (resultado.includes(clave)) {
+            resultado += ' ' + sinonimosChat[clave];
+        }
+    });
+    return resultado;
+}
+
+// Sistema de puntaje: cada herramienta suma puntos según dónde aparece el término
+// (nombre > categoría > descripción), para mostrar primero lo más relevante.
+function buscarHerramientasPorTexto(query) {
+    const palabras = query.split(/\s+/).filter(p => p.length > 2);
+    if (palabras.length === 0) return [];
+
+    const puntuadas = tools.map(tool => {
+        const nombre = normalizarTexto(tool.name);
+        const categoria = normalizarTexto(tool.category);
+        const descripcion = normalizarTexto(tool.description);
+        let puntaje = 0;
+
+        palabras.forEach(palabra => {
+            if (nombre.includes(palabra)) puntaje += 5;
+            if (categoria.includes(palabra)) puntaje += 3;
+            if (descripcion.includes(palabra)) puntaje += 1;
+        });
+
+        return { tool, puntaje };
+    });
+
+    return puntuadas
+        .filter(p => p.puntaje > 0)
+        .sort((a, b) => b.puntaje - a.puntaje)
+        .map(p => p.tool);
+}
+
+// ======================================================
+// INTERFAZ DE BURBUJAS DEL CHAT
+// ======================================================
+
+let chatYaInicializado = false;
+let chatHistorialContexto = []; // guarda las últimas búsquedas para dar contexto simple
+
+function agregarBurbuja(texto, tipo = 'bot') {
+    const messagesEl = document.getElementById('chat-messages');
+    if (!messagesEl) return;
+
+    const row = document.createElement('div');
+    row.className = 'chat-bubble-row';
+    row.innerHTML = `<div class="chat-bubble from-${tipo}">${texto}</div>`;
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return row;
+}
+
+function mostrarEscribiendo() {
+    const messagesEl = document.getElementById('chat-messages');
+    if (!messagesEl) return null;
+    const row = document.createElement('div');
+    row.className = 'chat-bubble-row';
+    row.id = 'chat-typing-indicator';
+    row.innerHTML = `<div class="chat-bubble from-bot chat-typing"><span></span><span></span><span></span></div>`;
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return row;
+}
+
+function quitarEscribiendo() {
+    const indicator = document.getElementById('chat-typing-indicator');
+    if (indicator) indicator.remove();
+}
+
+// Convierte una lista de herramientas en mini-tarjetas clicables dentro del chat
+function renderHerramientasEnChat(lista) {
+    return lista.map(t => `
+        <a href="${t.link}" target="_blank" rel="noopener" class="chat-tool-suggestion">
+            <span class="cts-icon">${t.icon}</span>
+            <span>
+                <span class="cts-name">${t.name}</span><br>
+                <span class="cts-cat">${t.category}</span>
+            </span>
+        </a>
+    `).join('');
+}
+
+// Sugerencias dinámicas: cambian según el contexto de la última respuesta
+function renderSugerenciasChat(opciones) {
+    const cont = document.getElementById('chat-suggestions');
+    if (!cont) return;
+    cont.innerHTML = opciones.map(op =>
+        `<button class="chat-suggestion-chip" onclick="preguntar('${op.replace(/'/g, "\\'")}')">${op}</button>`
+    ).join('');
+}
+
+function sugerenciasIniciales() {
+    renderSugerenciasChat(['¿Qué es PRO?', 'Necesito presentaciones', 'Soy nuevo', '¿Es gratis?']);
+}
+
+function initChatbotIfNeeded() {
+    if (chatYaInicializado) return;
+    chatYaInicializado = true;
+    agregarBurbuja('¡Hola! 👋 Soy el asistente del directorio. Preguntame qué necesitás hacer (ej: "organizar tareas", "editar fotos") o cualquier duda sobre cómo usar el sitio.', 'bot');
+    sugerenciasIniciales();
+    document.getElementById('chat-input')?.focus();
+}
+
+// ======================================================
+// MOTOR DE RESPUESTAS (lógica de FAQ + sinónimos + puntaje)
+// ======================================================
+
+function procesarMensajeChat(inputOriginal) {
+    const inputNorm = normalizarTexto(inputOriginal);
+
+    // 1. Saludos, agradecimientos, despedidas
+    if (saludos.some(s => inputNorm.includes(s))) {
+        renderSugerenciasChat(['¿Qué es PRO?', 'Necesito presentaciones', 'Soy nuevo', '¿Es gratis?']);
+        return '¡Hola! 👋 Decime qué necesitás hacer (por ejemplo "organizar tareas" o "editar fotos") y te recomiendo herramientas del directorio.';
+    }
+    if (agradecimientos.some(a => inputNorm.includes(a))) {
+        renderSugerenciasChat(['Otra recomendación', '¿Cómo empiezo?', '¿Es seguro?']);
+        return '¡De nada! Si necesitás algo más, contame. 😊';
+    }
+    if (despedidas.some(d => inputNorm.includes(d))) {
+        renderSugerenciasChat([]);
+        return '¡Listo! Cuando quieras volver a preguntar, acá estoy. 👋';
+    }
+
+    // 2. Preguntas frecuentes con respuesta directa
+    const faqEncontrada = faqChat.find(item =>
+        item.triggers.some(trigger => inputNorm.includes(normalizarTexto(trigger)))
     );
+    if (faqEncontrada) {
+        renderSugerenciasChat(['Necesito presentaciones', 'Editar imágenes', '¿Cómo empiezo?']);
+        return faqEncontrada.respuesta;
+    }
 
-    if (input.trim() === "") {
-        responseElement.innerText = "Por favor, escribí algo primero.";
-        return;
+    // 3. Búsqueda de herramientas con sinónimos y puntaje de relevancia
+    const queryExpandida = normalizarTexto(aplicarSinonimos(inputNorm));
+    let sugerencias = buscarHerramientasPorTexto(queryExpandida);
+
+    // Contexto simple: si esta búsqueda no dio nada pero la anterior sí,
+    // probamos combinando con la categoría de la última herramienta sugerida
+    if (sugerencias.length === 0 && chatHistorialContexto.length > 0) {
+        const ultimaCategoria = normalizarTexto(chatHistorialContexto[chatHistorialContexto.length - 1].category);
+        sugerencias = buscarHerramientasPorTexto(queryExpandida + ' ' + ultimaCategoria);
     }
 
     if (sugerencias.length > 0) {
-        // Mostramos las primeras 3 recomendaciones encontradas
-        const lista = sugerencias.slice(0, 3).map(t => t.name).join(", ");
-        responseElement.innerHTML = `¡Encontré estas herramientas para vos: <strong>${lista}</strong>! 
-        <br> <span class="text-blue-200">Revisá abajo las tarjetas filtradas para más detalle.</span>`;
-        
-        // Opcional: Si quieres que además se filtren las tarjetas automáticamente:
-        // filtrarTarjetas(input); 
-    } else {
-        responseElement.innerText = "No encontré nada con ese término. Probá con 'programación', 'imagen' o 'texto'.";
+        const top3 = sugerencias.slice(0, 3);
+        chatHistorialContexto.push(top3[0]);
+        if (chatHistorialContexto.length > 5) chatHistorialContexto.shift();
+
+        // Filtramos automáticamente las tarjetas del sitio para que coincidan
+        searchInput.value = inputOriginal;
+        searchQuery = inputOriginal;
+        filterAndSearch();
+
+        renderSugerenciasChat(['Mostrame más opciones', '¿Cuál es más fácil?', 'Otra categoría']);
+
+        return `Te recomiendo estas opciones: ${renderHerramientasEnChat(top3)}
+                <div class="text-xs text-gray-400 mt-2">También filtré las tarjetas de abajo 👇</div>`;
     }
+
+    renderSugerenciasChat(['¿Qué es PRO?', 'Necesito presentaciones', 'Soy nuevo']);
+    return `No encontré nada específico para eso. Probá con algo como <em>"texto"</em>, <em>"imagen"</em>, <em>"estudio"</em> o <em>"organizar tareas"</em>. 🤔`;
+}
+
+function enviarMensajeChat(textoForzado) {
+    const inputEl = document.getElementById('chat-input');
+    const inputOriginal = (textoForzado !== undefined ? textoForzado : inputEl.value).trim();
+
+    if (inputOriginal === '') return;
+
+    agregarBurbuja(inputOriginal, 'user');
+    if (inputEl) inputEl.value = '';
+    renderSugerenciasChat([]); // ocultamos sugerencias viejas mientras responde
+
+    mostrarEscribiendo();
+
+    // Pequeño delay simulado para que la respuesta se sienta natural, no instantánea
+    setTimeout(() => {
+        quitarEscribiendo();
+        const respuesta = procesarMensajeChat(inputOriginal);
+        agregarBurbuja(respuesta, 'bot');
+    }, 450);
 }
 
 function preguntar(categoria) {
-    document.getElementById('chat-input').value = categoria;
-    buscarHerramienta(); // Llama a tu función de búsqueda automáticamente
+    enviarMensajeChat(categoria);
 }
+
+// Conectamos el formulario del chat (en vez de un botón con onclick suelto,
+// usamos submit para que también funcione con Enter desde el celular)
+document.getElementById('chat-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    enviarMensajeChat();
+});
