@@ -7,6 +7,7 @@
     <title>Potenciá tu trabajo y estudios dia a dia con IA – Guía para Entre Ríos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=20260627">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="manifest" href="/manifest.json">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1880658746889726"
@@ -42,20 +43,24 @@
             <p class="text-xl md:text-2xl mb-8">
                 Tu biblioteca de herramientas de IA fáciles de usar para residentes de Paraná y Entre Ríos.
             </p>
-            <!-- Buscador y Modo Oscuro -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
+            <!-- Buscador y botones del hero -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-3 max-w-2xl mx-auto">
                 <div class="relative w-full search-wrapper">
-                    <input type="text" id="search-input" placeholder="Buscar herramienta (ej: 'diseño', 'texto')..." 
-                           class="w-full px-6 py-3 rounded-full text-gray-800 focus:outline-none shadow-md" autocomplete="off">
-                    <span class="absolute right-4 top-3 text-gray-400">🔍</span>
+                    <i class="fa-solid fa-magnifying-glass hero-search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Buscar herramienta…"
+                           class="hero-search-input w-full" autocomplete="off">
                     <div id="autocomplete-list" class="autocomplete-list"></div>
                 </div>
-                <button id="dark-mode-toggle" class="btn-press bg-blue-800 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-blue-900 transition-colors duration-300 whitespace-nowrap">
-                    🌙 Modo Oscuro
-                </button>
-                <button id="suggest-tool-btn" class="btn-press bg-green-600 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-700 transition-colors duration-300 whitespace-nowrap">
-                    💡 Sugerir Herramienta
-                </button>
+                <div class="flex gap-2 flex-shrink-0">
+                    <button id="dark-mode-toggle" class="hero-btn hero-btn-dark btn-press">
+                        <i class="fa-solid fa-moon hero-btn-icon-dark"></i>
+                        <span class="hero-btn-label-dark">Modo Oscuro</span>
+                    </button>
+                    <button id="suggest-tool-btn" class="hero-btn hero-btn-suggest btn-press">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Sugerir</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Historial de búsquedas recientes -->
@@ -330,8 +335,9 @@
                 <h4 class="flex items-center gap-2 text-lg">🧭 TuDirectorioIA</h4>
                 <p class="text-sm leading-relaxed">Tu biblioteca de herramientas de IA fáciles de usar para residentes de Paraná y Entre Ríos. Sin tecnicismos, con buena onda.</p>
                 <div class="flex gap-3 mt-4">
-                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
-                    <a href="mailto: exequielbusiness@hotmail.com" class="social-icon" aria-label="Email">✉️</a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:exequielbusiness@hotmail.com" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
 

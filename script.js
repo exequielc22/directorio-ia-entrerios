@@ -722,6 +722,210 @@ const tools = [
         labels: [],
         pros: ["Datos de internet en tiempo real", "100% gratis", "Muy útil para seguridad de red"],
         cons: ["Útil principalmente para usuarios técnicos", "Interfaz principalmente en inglés"]
+    },
+
+    /* ── TRABAJO REMOTO ── 2 nuevas ── */
+    {
+        name: "Notion AI",
+        category: "Trabajo Remoto",
+        description: "Workspace de notas, documentos y proyectos con IA integrada para escribir, resumir y organizar.",
+        icon: "🗒️",
+        link: "https://www.notion.com",
+        bestFor: "Organizar proyectos, notas y documentos con IA integrada",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límites; plan Plus de pago para IA ilimitada",
+        rating: 9.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Todo en un solo lugar: notas, tareas y bases de datos", "IA que escribe y resume por vos", "Muy flexible y personalizable"],
+        cons: ["Puede abrumar al principio por tantas opciones", "IA requiere plan de pago"]
+    },
+    {
+        name: "Loom",
+        category: "Trabajo Remoto",
+        description: "Grabá y compartí videos de pantalla con resúmenes automáticos por IA. Ideal para reemplazar reuniones.",
+        icon: "🎥",
+        link: "https://www.loom.com",
+        bestFor: "Grabar mensajes en video para el trabajo sin reunirse",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis hasta 25 videos; plan Business de pago",
+        rating: 8.6,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Grabación de pantalla en segundos", "Resumen automático del video por IA", "Muy útil para trabajo remoto asíncrono"],
+        cons: ["Límite de 25 videos en versión gratis", "Almacenamiento limitado sin plan de pago"]
+    },
+
+    /* ── ESTUDIOS/EDUCACIÓN ── 2 nuevas ── */
+    {
+        name: "Khan Academy",
+        category: "Estudios/Educación",
+        description: "Plataforma gratuita con lecciones, videos y ejercicios de todas las materias, ahora con tutor de IA Khanmigo.",
+        icon: "🎓",
+        link: "https://es.khanacademy.org",
+        bestFor: "Aprender cualquier materia gratis con ejercicios interactivos",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "100% gratis; tutor de IA Khanmigo de pago",
+        rating: 9.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏆 Editor favorito", "🔥 Muy popular"],
+        pros: ["Completamente gratis para siempre", "Cubre desde primaria hasta universitario", "100% en español con adaptación local"],
+        cons: ["Tutor de IA es de pago", "Algunas materias tienen menos contenido en español"]
+    },
+    {
+        name: "Anki",
+        category: "Estudios/Educación",
+        description: "Sistema de tarjetas con memoria espaciada que te ayuda a recordar lo que estudiaste mucho más tiempo.",
+        icon: "🃏",
+        link: "https://apps.ankiweb.net",
+        bestFor: "Memorizar vocabulario, fechas y conceptos para exámenes",
+        easeOfUse: "Intermedio",
+        pricingDetail: "Gratis en PC y web; app iOS de pago (Android gratis)",
+        rating: 8.9,
+        speed: "rapida",
+        difficulty: "media",
+        labels: ["🏆 Editor favorito"],
+        pros: ["Método científico para memorizar de forma eficiente", "Miles de mazos compartidos por la comunidad", "100% gratis en PC y Android"],
+        cons: ["Interfaz algo anticuada y poco visual", "App de iOS tiene costo único"]
+    },
+
+    /* ── TAREAS DEL HOGAR ── 2 nuevas ── */
+    {
+        name: "OurHome",
+        category: "Tareas del Hogar",
+        description: "App familiar para repartir las tareas del hogar entre todos y llevar listas de compras compartidas.",
+        icon: "🏡",
+        link: "https://ourhomeapp.com",
+        bestFor: "Organizar y repartir las tareas del hogar en familia",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con funciones básicas; plan Premium de pago",
+        rating: 7.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Lista de tareas compartida en tiempo real", "Sistema de puntos para motivar a los chicos", "Listas de compras integradas"],
+        cons: ["Interfaz principalmente en inglés", "Funciones avanzadas son de pago"]
+    },
+    {
+        name: "Notion Recetas",
+        category: "Tareas del Hogar",
+        description: "Usá la IA de Notion para crear un recetario personal, planificar menús semanales y generar listas de compras.",
+        icon: "🍽️",
+        link: "https://www.notion.com/templates/recipe-book",
+        bestFor: "Organizar recetas y planificar menús semanales con IA",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límites; plan Plus de pago",
+        rating: 8.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Recetario personalizado que crece con el tiempo", "IA genera ideas de menú según ingredientes", "Lista de compras automática desde el menú"],
+        cons: ["Requiere tener cuenta de Notion", "IA de planificación requiere plan de pago"]
+    },
+
+    /* ── CREATIVIDAD/DISEÑO ── 2 nuevas ── */
+    {
+        name: "Adobe Firefly",
+        category: "Creatividad/Diseño",
+        description: "Generador de imágenes y efectos de IA de Adobe, integrado con Photoshop y sin problemas de derechos de autor.",
+        icon: "🔥",
+        link: "https://firefly.adobe.com",
+        bestFor: "Generar imágenes y efectos de IA listos para uso comercial",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con créditos mensuales; plan Creative Cloud de pago",
+        rating: 9.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Imágenes 100% libres de derechos de autor", "Integrado directo con Photoshop e Illustrator", "Créditos gratis mensuales generosos"],
+        cons: ["Créditos se agotan con uso intensivo", "Máximo potencial requiere suite Creative Cloud"]
+    },
+    {
+        name: "Descript",
+        category: "Creatividad/Diseño",
+        description: "Editor de video y podcast donde editás el texto del guión y el video se edita solo. Con IA para doblar voces.",
+        icon: "🎙️",
+        link: "https://www.descript.com",
+        bestFor: "Editar videos y podcasts editando el texto transcrito",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límites; plan Creator de pago",
+        rating: 8.8,
+        speed: "media",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Editar video eliminando texto del guión es muy innovador", "Transcripción automática muy precisa", "Relleno de silencio automático incluido"],
+        cons: ["Exportación HD requiere plan de pago", "Funciones de IA de voz son de pago"]
+    },
+
+    /* ── TRÁMITES Y CONSULTAS ── 2 nuevas ── */
+    {
+        name: "AFIP Digital",
+        category: "Trámites y Consultas",
+        description: "Portal oficial de AFIP para gestionar tu CUIT, declaraciones juradas, facturación y trámites impositivos.",
+        icon: "🏦",
+        link: "https://www.afip.gob.ar",
+        bestFor: "Gestionar trámites impositivos y facturación ante AFIP",
+        easeOfUse: "Intermedio",
+        pricingDetail: "Gratis (portal oficial del Estado)",
+        rating: 7.2,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["Portal oficial para todos los trámites impositivos", "Completamente gratis", "Facturación electrónica incluida"],
+        cons: ["Interfaz poco amigable para principiantes", "Puede ser lento en épocas de vencimientos"]
+    },
+    {
+        name: "DocuSign",
+        category: "Trámites y Consultas",
+        description: "Firmá contratos y documentos digitalmente con validez legal en Argentina y todo el mundo.",
+        icon: "✍️",
+        link: "https://www.docusign.com",
+        bestFor: "Firmar contratos y documentos con validez legal online",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis para prueba; planes desde pago mensual",
+        rating: 8.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Firma digital con validez legal en Argentina", "Muy seguro y reconocido mundialmente", "Proceso muy simple para el firmante"],
+        cons: ["Planes de pago obligatorios para uso frecuente", "Prueba gratuita muy limitada"]
+    },
+
+    /* ── IA AVANZADA ── 2 nuevas ── */
+    {
+        name: "Hugging Face",
+        category: "IA Avanzada",
+        description: "La mayor plataforma open source de IA con miles de modelos, datasets y demos para explorar y usar.",
+        icon: "🤗",
+        link: "https://huggingface.co",
+        bestFor: "Explorar y usar modelos de IA open source sin costo",
+        easeOfUse: "Requiere algo de experiencia técnica",
+        pricingDetail: "Gratis para explorar; infraestructura propia de pago",
+        rating: 9.0,
+        speed: "media",
+        difficulty: "avanzada",
+        labels: ["🔥 Muy popular"],
+        pros: ["Acceso a miles de modelos de IA open source", "Demos gratuitas de casi todo", "Gran comunidad activa de desarrolladores"],
+        cons: ["Requiere conocimientos técnicos para sacarle provecho", "Infraestructura dedicada es de pago"]
+    },
+    {
+        name: "LM Studio",
+        category: "IA Avanzada",
+        description: "Ejecutá modelos de IA potentes en tu propia computadora sin internet. Privacidad total y sin costos.",
+        icon: "💻",
+        link: "https://lmstudio.ai",
+        bestFor: "Usar modelos de IA localmente sin internet ni costos por uso",
+        easeOfUse: "Requiere experiencia técnica",
+        pricingDetail: "100% gratis y open source",
+        rating: 8.4,
+        speed: "potente",
+        difficulty: "avanzada",
+        labels: ["🚀 IA nueva"],
+        pros: ["100% gratis, privado y sin límites de uso", "Funciona sin internet una vez descargado", "Compatible con los mejores modelos open source"],
+        cons: ["Requiere una PC con buena GPU para buen rendimiento", "Configuración inicial requiere conocimientos técnicos"]
     }
 ];
 
@@ -1029,7 +1233,12 @@ const navDarkToggle = document.getElementById('nav-dark-toggle');
 const body = document.body;
 
 function syncDarkModeButtons(isDark) {
-    if (darkModeToggle) darkModeToggle.innerText = isDark ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+    if (darkModeToggle) {
+        const icon = darkModeToggle.querySelector('.hero-btn-icon-dark');
+        const label = darkModeToggle.querySelector('.hero-btn-label-dark');
+        if (icon) icon.className = isDark ? 'fa-solid fa-sun hero-btn-icon-dark' : 'fa-solid fa-moon hero-btn-icon-dark';
+        if (label) label.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+    }
     if (navDarkToggle) navDarkToggle.innerText = isDark ? '☀️' : '🌙';
 }
 

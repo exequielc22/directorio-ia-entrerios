@@ -258,14 +258,85 @@ html {
     transform: translateY(-1px) scale(0.97);
 }
 
-/* Buscador con efecto glow al enfocar */
-#search-input {
-    transition: box-shadow 0.4s ease, transform 0.2s ease;
+/* ── Hero: buscador minimal ── */
+.hero-search-input {
+    background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    border-radius: 12px;
+    padding: 0.72rem 1.1rem 0.72rem 2.7rem;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.52);
+}
+.hero-search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+}
+.hero-search-icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    pointer-events: none;
 }
 
-#search-input:focus {
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.35), 0 0 28px 4px rgba(59, 130, 246, 0.55);
+/* ── Hero: botones minimal glass ── */
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.68rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.9);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    letter-spacing: 0.01em;
+}
+.hero-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #fff;
     transform: translateY(-1px);
+}
+.hero-btn-suggest {
+    border-color: rgba(134, 239, 172, 0.4);
+    background: rgba(22, 163, 74, 0.2);
+}
+.hero-btn-suggest:hover {
+    background: rgba(22, 163, 74, 0.35);
+    border-color: rgba(134, 239, 172, 0.7);
+}
+
+/* dark mode: mantener estilos glass en modo oscuro */
+.dark-mode .hero-search-input {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+.dark-mode .hero-search-input:focus {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Buscador con efecto glow al enfocar (fallback legacy) */
+#search-input {
+    transition: box-shadow 0.4s ease, transform 0.2s ease;
 }
 
 /* Animación general de "press" para botones principales */
@@ -674,12 +745,16 @@ body.dark-mode {
     justify-content: center;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.05rem;
+    text-decoration: none;
 }
 
 .social-icon:hover {
     background: var(--primary-blue);
     transform: translateY(-3px);
+    color: #ffffff;
 }
 
 /* --- Soporte Modo Oscuro para elementos nuevos --- */
