@@ -958,6 +958,39 @@ body.dark-mode {
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* Tamaño y posición del chat en MOBILE: márgenes simétricos a ambos lados
+   (en vez de un ancho fijo anclado solo a la derecha, que en pantallas chicas
+   quedaba desproporcionado y pegado hacia un costado) */
+.chat-window-mobile {
+    bottom: 5.5rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    max-height: min(75vh, 560px) !important;
+}
+
+.chat-messages-area {
+    max-height: 50vh;
+}
+
+/* Desde tablets/desktop en adelante, volvemos al comportamiento de ventana
+   flotante clásica con ancho fijo anclada a la esquina inferior derecha.
+   Fijamos TODAS las propiedades explícitamente (no solo "left: auto") para
+   que no quede ninguna heredada de la regla mobile de arriba. */
+@media (min-width: 640px) {
+    .chat-window-mobile {
+        bottom: 6rem !important;
+        left: auto !important;
+        right: 1.5rem !important;
+        width: 24rem !important;
+        max-height: 70vh !important;
+    }
+
+    .chat-messages-area {
+        max-height: 45vh;
+    }
+}
+
 .chat-bubble {
     max-width: 85%;
     padding: 0.6rem 0.9rem;
@@ -1113,6 +1146,56 @@ body.dark-mode {
     border-color: var(--primary-blue);
     transform: translateY(-2px);
     box-shadow: 0 8px 16px -6px rgba(59, 130, 246, 0.25);
+}
+
+/* Filtros rápidos por dificultad y velocidad */
+.qf-btn {
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1.5px solid #E2E8F0;
+    background: #F8FAFC;
+    color: #475569;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+.qf-btn:hover {
+    background: #EFF6FF;
+    border-color: #93C5FD;
+    color: #1D4ED8;
+}
+.qf-btn.active {
+    background: #2563EB;
+    border-color: #2563EB;
+    color: #fff;
+}
+.qf-sep {
+    color: #CBD5E1;
+    font-size: 1.1rem;
+    line-height: 1;
+    align-self: center;
+    padding: 0 0.25rem;
+    user-select: none;
+}
+.dark .qf-btn {
+    background: #1E293B;
+    border-color: #334155;
+    color: #94A3B8;
+}
+.dark .qf-btn:hover {
+    background: #1E3A5F;
+    border-color: #60A5FA;
+    color: #93C5FD;
+}
+.dark .qf-btn.active {
+    background: #2563EB;
+    border-color: #2563EB;
+    color: #fff;
+}
+.dark .qf-sep {
+    color: #475569;
 }
 
 /* Selectores del comparador libre */
@@ -1293,5 +1376,260 @@ body.dark-mode {
 
     .comparison-row-label {
         min-width: 100px;
+    }
+}
+
+/* ======================================================
+   PARTE 7: PUNTUACIÓN, VELOCIDAD, DIFICULTAD, ETIQUETAS
+   ====================================================== */
+
+/* --- Rating (estrellas + número) en tarjetas --- */
+.tool-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.rating-stars {
+    font-size: 0.85rem;
+    letter-spacing: -1px;
+}
+
+.rating-score {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #F59E0B;
+    background: #FEF3C7;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    line-height: 1.4;
+}
+
+.dark-mode .rating-score {
+    background: rgba(245, 158, 11, 0.2);
+    color: #FCD34D;
+}
+
+/* --- Badges de velocidad y dificultad --- */
+.tool-meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.7rem;
+}
+
+.tool-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+}
+
+.badge-speed {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+}
+
+.badge-diff {
+    background: #F8FAFC;
+    color: #475569;
+    border: 1px solid #E2E8F0;
+}
+
+.dark-mode .badge-speed {
+    background: rgba(29, 78, 216, 0.2);
+    color: #93C5FD;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .badge-diff {
+    background: rgba(71, 85, 105, 0.3);
+    color: #CBD5E1;
+    border-color: #475569;
+}
+
+/* --- Etiquetas especiales (🏆 🔥 💎 🚀) --- */
+.tool-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.tool-label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+    color: #92400E;
+    border: 1px solid #FDE68A;
+    letter-spacing: 0.02em;
+}
+
+.dark-mode .tool-label {
+    background: rgba(146, 64, 14, 0.25);
+    color: #FCD34D;
+    border-color: rgba(252, 211, 77, 0.3);
+}
+
+/* ======================================================
+   PARTE 8: COMPARADOR MEJORADO — PROS/CONTRAS Y RECOMENDACIÓN
+   ====================================================== */
+
+/* Rating en la cabecera de la tabla comparativa */
+.comp-header-rating {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #F59E0B;
+    background: #FEF3C7;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    margin-top: 0.2rem;
+}
+
+.dark-mode .comp-header-rating {
+    background: rgba(245, 158, 11, 0.2);
+    color: #FCD34D;
+}
+
+/* Rating en filas de la tabla */
+.comp-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+}
+
+/* Filas de pros */
+.comp-pros-row td {
+    background: #F0FDF4 !important;
+}
+
+.comp-pros-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.comp-pros-list li {
+    font-size: 0.82rem;
+    color: #166534;
+    line-height: 1.35;
+}
+
+/* Filas de contras */
+.comp-cons-row td {
+    background: #FFF7F7 !important;
+}
+
+.comp-cons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.comp-cons-list li {
+    font-size: 0.82rem;
+    color: #991B1B;
+    line-height: 1.35;
+}
+
+/* Modo oscuro pros/contras */
+.dark-mode .comp-pros-row td {
+    background: rgba(22, 101, 52, 0.12) !important;
+}
+
+.dark-mode .comp-pros-list li {
+    color: #86EFAC;
+}
+
+.dark-mode .comp-cons-row td {
+    background: rgba(153, 27, 27, 0.12) !important;
+}
+
+.dark-mode .comp-cons-list li {
+    color: #FCA5A5;
+}
+
+/* --- Bloque "Nuestra Recomendación" --- */
+.comp-recommendation {
+    margin-top: 1.25rem;
+    background: linear-gradient(135deg, #1E293B, #1D4ED8);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    color: #ffffff;
+    box-shadow: 0 8px 24px -6px rgba(29, 78, 216, 0.45);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.comp-rec-crown {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #FCD34D;
+    margin-bottom: 0.5rem;
+}
+
+.comp-rec-winner {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.comp-rec-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.comp-rec-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.comp-rec-reason {
+    font-size: 0.88rem;
+    color: #CBD5E1;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.comp-rec-reason strong {
+    color: #ffffff;
+}
+
+@media (max-width: 640px) {
+    .tool-meta-badges {
+        gap: 0.25rem;
+    }
+    .tool-badge {
+        font-size: 0.62rem;
+        padding: 0.2rem 0.45rem;
+    }
+    .tool-label {
+        font-size: 0.6rem;
+    }
+    .comp-recommendation {
+        padding: 1rem;
+    }
+    .comp-rec-name {
+        font-size: 1.15rem;
     }
 }

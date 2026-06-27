@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potenciá tu trabajo y estudios dia a dia con IA – Guía para Entre Ríos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260627">
     <link rel="manifest" href="/manifest.json">
 
     <!--
@@ -143,10 +143,10 @@
                 <!-- Selector libre de herramientas a comparar -->
                 <div class="bg-white p-5 rounded-xl shadow-md mb-6">
                     <p class="text-sm font-semibold text-gray-600 mb-3">O armá tu propia comparación (elegí entre 2 y 3):</p>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <select id="compare-select-1" class="compare-select flex-1 border rounded-lg p-2 text-sm"></select>
-                        <select id="compare-select-2" class="compare-select flex-1 border rounded-lg p-2 text-sm"></select>
-                        <select id="compare-select-3" class="compare-select flex-1 border rounded-lg p-2 text-sm">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <select id="compare-select-1" class="compare-select w-full border rounded-lg p-2 text-sm"></select>
+                        <select id="compare-select-2" class="compare-select w-full border rounded-lg p-2 text-sm"></select>
+                        <select id="compare-select-3" class="compare-select w-full border rounded-lg p-2 text-sm">
                             <option value="">+ Agregar una tercera (opcional)</option>
                         </select>
                     </div>
@@ -174,6 +174,20 @@
                 <button class="category-btn bg-gray-200 text-gray-800 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-colors duration-300" data-category="IA Avanzada">IA Avanzada</button>
             </div>
             
+
+            <!-- Filtros rápidos por dificultad y velocidad -->
+            <div id="quick-filters" class="flex flex-wrap justify-center gap-2 mb-6">
+                <span class="text-sm font-semibold text-gray-500 self-center mr-1">Filtrar por:</span>
+                <button class="qf-btn qf-diff active" data-diff="all">Todos</button>
+                <button class="qf-btn qf-diff" data-diff="facil">🟢 Fácil</button>
+                <button class="qf-btn qf-diff" data-diff="media">🟡 Media</button>
+                <button class="qf-btn qf-diff" data-diff="avanzada">🔴 Avanzada</button>
+                <span class="qf-sep">|</span>
+                <button class="qf-btn qf-speed active" data-speed="all">Toda velocidad</button>
+                <button class="qf-btn qf-speed" data-speed="rapida">⚡ Muy rápida</button>
+                <button class="qf-btn qf-speed" data-speed="media">⚡⚡ Media</button>
+                <button class="qf-btn qf-speed" data-speed="potente">⚡⚡⚡ Muy potente</button>
+            </div>
 
             <!-- Contenedor de Tarjetas de Herramientas -->
             <div id="tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -366,7 +380,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260627"></script>
 
     <!-- Botón Flotante -->
 <button onclick="toggleChat()" id="chat-fab" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition z-40">
@@ -374,7 +388,7 @@
 </button>
 
 <!-- Ventana de Chat (Flotante) -->
-<div id="chat-window" class="hidden fixed bottom-24 right-6 w-80 sm:w-96 bg-white border border-blue-200 shadow-2xl rounded-2xl z-50 flex flex-col" style="max-height: 70vh;">
+<div id="chat-window" class="hidden fixed chat-window-mobile bg-white border border-blue-200 shadow-2xl rounded-2xl z-50 flex flex-col">
     <div class="flex items-center justify-between p-4 border-b border-gray-100">
         <div>
             <h3 class="font-bold text-blue-900">Asistente del Directorio</h3>
@@ -383,7 +397,7 @@
         <button onclick="toggleChat()" class="text-gray-400 hover:text-gray-600 text-xl leading-none" aria-label="Cerrar chat">✕</button>
     </div>
 
-    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3" style="max-height: 45vh;"></div>
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 chat-messages-area"></div>
 
     <div id="chat-suggestions" class="flex flex-wrap gap-2 px-4 pb-2"></div>
 

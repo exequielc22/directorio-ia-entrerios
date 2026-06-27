@@ -13,18 +13,30 @@ const tools = [
         link: "https://chatgpt.com",
         bestFor: "Escribir, resumir y resolver dudas del día a día",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan Plus de pago para más uso"
+        pricingDetail: "Gratis con límites; plan Plus de pago para más uso",
+        rating: 9.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Muy versátil para todo tipo de texto", "Excelente soporte en español", "Versión gratis muy potente"],
+        cons: ["GPT-4 requiere plan Plus de pago", "Límite de mensajes en versión gratis"]
     },
     {
-    name: "Manus AI",
-    category: "Trabajo Remoto",
-    description: "Agente de IA autónomo capaz de ejecutar tareas complejas de principio a fin.",
-    icon: "🤖",
-    link: "https://manus.im/invitation/3XQLEKLJN9ELECJ?utm_source=invitation&utm_medium=social&utm_campaign=copy_link",
-    isPro: true,
-    bestFor: "Delegar tareas complejas de principio a fin de forma autónoma",
-    easeOfUse: "Requiere algo de experiencia previa con IA",
-    pricingDetail: "Créditos gratis diarios; planes de pago para más uso"
+        name: "Manus AI",
+        category: "Trabajo Remoto",
+        description: "Agente de IA autónomo capaz de ejecutar tareas complejas de principio a fin.",
+        icon: "🤖",
+        link: "https://manus.im/invitation/3XQLEKLJN9ELECJ?utm_source=invitation&utm_medium=social&utm_campaign=copy_link",
+        isPro: true,
+        bestFor: "Delegar tareas complejas de principio a fin de forma autónoma",
+        easeOfUse: "Requiere algo de experiencia previa con IA",
+        pricingDetail: "Créditos gratis diarios; planes de pago para más uso",
+        rating: 8.9,
+        speed: "media",
+        difficulty: "avanzada",
+        labels: ["🚀 IA nueva", "💎 Premium"],
+        pros: ["Ejecuta tareas de inicio a fin de forma autónoma", "Muy potente para tareas complejas"],
+        cons: ["Requiere experiencia previa con IA", "Los créditos gratis se agotan rápido"]
     },
     {
         name: "Trello",
@@ -34,7 +46,13 @@ const tools = [
         link: "https://trello.com",
         bestFor: "Organizar proyectos y tareas en equipo con tableros",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; planes de pago para equipos grandes"
+        pricingDetail: "Gratis con límites; planes de pago para equipos grandes",
+        rating: 8.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Interfaz visual muy intuitiva", "Excelente para trabajar en equipo", "Versión gratis muy completa"],
+        cons: ["Sin funciones de IA avanzada", "Puede ser limitado para proyectos grandes"]
     },
     {
         name: "DeepL",
@@ -44,7 +62,13 @@ const tools = [
         link: "https://www.deepl.com",
         bestFor: "Traducir textos y documentos con matices naturales",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límite de caracteres; plan Pro de pago"
+        pricingDetail: "Gratis con límite de caracteres; plan Pro de pago",
+        rating: 9.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏆 Editor favorito"],
+        pros: ["Traducciones muy naturales y precisas", "Soporta muchos idiomas", "Muy fácil de usar"],
+        cons: ["Límite de caracteres en versión gratis", "Documentos grandes requieren plan de pago"]
     },
     {
         name: "Alrite",
@@ -55,7 +79,13 @@ const tools = [
         isPro: false,
         bestFor: "Transcribir reuniones y llamadas en tiempo real",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites de minutos; planes de pago para más uso"
+        pricingDetail: "Gratis con límites de minutos; planes de pago para más uso",
+        rating: 7.8,
+        speed: "media",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Transcripción en tiempo real", "Resúmenes automáticos muy útiles"],
+        cons: ["Límite de minutos en versión gratis", "Requiere buena conexión a internet"]
     },
     {
         name: "Fireflies.ai",
@@ -65,7 +95,13 @@ const tools = [
         link: "https://fireflies.ai",
         bestFor: "Grabar y resumir reuniones automáticamente",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; planes de pago para equipos"
+        pricingDetail: "Gratis con límites; planes de pago para equipos",
+        rating: 8.2,
+        speed: "media",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Integración con Zoom y Google Meet", "Resúmenes automáticos de reuniones", "Muy fácil de activar"],
+        cons: ["Almacenamiento limitado en versión gratis", "Requiere permisos de grabación"]
     },
     {
         name: "Gemini Enterprise Agent Platform",
@@ -75,7 +111,13 @@ const tools = [
         link: "https://cloud.google.com/gemini/docs/agents",
         bestFor: "Crear agentes de IA personalizados para empresas",
         easeOfUse: "Requiere experiencia técnica",
-        pricingDetail: "Modelo de pago por uso en Google Cloud"
+        pricingDetail: "Modelo de pago por uso en Google Cloud",
+        rating: 7.5,
+        speed: "media",
+        difficulty: "avanzada",
+        labels: ["💎 Premium"],
+        pros: ["Muy potente para uso empresarial", "Integrado con toda la nube de Google"],
+        cons: ["Requiere experiencia técnica avanzada", "Modelo de pago por uso"]
     },
     {
         name: "Make",
@@ -85,7 +127,13 @@ const tools = [
         link: "https://www.make.com",
         bestFor: "Automatizar tareas conectando distintas apps",
         easeOfUse: "Intermedio, sin necesitar saber programar",
-        pricingDetail: "Gratis con límites; planes de pago para más operaciones"
+        pricingDetail: "Gratis con límites; planes de pago para más operaciones",
+        rating: 8.7,
+        speed: "media",
+        difficulty: "media",
+        labels: ["🔥 Muy popular"],
+        pros: ["Automatización visual muy potente", "Conecta cientos de aplicaciones", "Sin necesidad de programar"],
+        cons: ["Puede ser complejo para principiantes", "Operaciones limitadas en versión gratis"]
     },
     {
         name: "Perplexity",
@@ -95,7 +143,13 @@ const tools = [
         link: "https://www.perplexity.ai",
         bestFor: "Buscar información actualizada con fuentes citadas",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan Pro de pago"
+        pricingDetail: "Gratis con límites; plan Pro de pago",
+        rating: 9.2,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Respuestas con fuentes citadas", "Información siempre actualizada", "Gratis y sin registro necesario"],
+        cons: ["Plan Pro para búsquedas ilimitadas", "Puede cometer errores como cualquier IA"]
     },
     {
         name: "Canva",
@@ -105,7 +159,13 @@ const tools = [
         link: "https://www.canva.com",
         bestFor: "Diseño gráfico, presentaciones y redes sociales",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con plantillas limitadas; Canva Pro de pago"
+        pricingDetail: "Gratis con plantillas limitadas; Canva Pro de pago",
+        rating: 9.6,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏆 Editor favorito", "🔥 Muy popular"],
+        pros: ["Interfaz muy fácil de usar", "Miles de plantillas profesionales", "100% en español"],
+        cons: ["Funciones avanzadas son de pago", "Imágenes con marca de agua en versión gratis"]
     },
     {
         name: "TTSreader",
@@ -116,7 +176,13 @@ const tools = [
         isPro: false,
         bestFor: "Escuchar apuntes o textos en vez de leerlos",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis, sin necesidad de registrarte"
+        pricingDetail: "Gratis, sin necesidad de registrarte",
+        rating: 7.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["100% gratis y sin registro", "Muy fácil de usar", "Funciona en el navegador"],
+        cons: ["Voces robóticas, poco naturales", "Sin historial de textos guardados"]
     },
     {
         name: "Google Cloud TTS",
@@ -127,7 +193,13 @@ const tools = [
         isPro: false,
         bestFor: "Generar voces realistas para proyectos o videos",
         easeOfUse: "Requiere algo de configuración técnica",
-        pricingDetail: "Gratis con cuota mensual; pago por uso adicional"
+        pricingDetail: "Gratis con cuota mensual; pago por uso adicional",
+        rating: 8.8,
+        speed: "media",
+        difficulty: "avanzada",
+        labels: [],
+        pros: ["Voces muy naturales y de alta calidad", "Gran variedad de voces e idiomas"],
+        cons: ["Requiere configuración técnica inicial", "Pago por uso adicional"]
     },
     {
         name: "Otter.ai",
@@ -137,7 +209,13 @@ const tools = [
         link: "https://otter.ai",
         bestFor: "Transcribir clases y generar resúmenes automáticos",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites de minutos; planes de pago"
+        pricingDetail: "Gratis con límites de minutos; planes de pago",
+        rating: 8.3,
+        speed: "media",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Transcripción de clases en tiempo real", "Resúmenes estructurados automáticos", "App para celular disponible"],
+        cons: ["Límite de 300 minutos gratis por mes", "Algunas funciones solo en inglés"]
     },
     {
         name: "Grammarly",
@@ -147,7 +225,13 @@ const tools = [
         link: "https://grammarly.com",
         bestFor: "Corregir y mejorar la redacción de tus textos",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con funciones básicas; plan Premium de pago"
+        pricingDetail: "Gratis con funciones básicas; plan Premium de pago",
+        rating: 9.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Corrección gramatical muy precisa", "Integración con el navegador y Word", "Explicaciones claras de cada error"],
+        cons: ["Optimizado para inglés, menos para español", "Funciones avanzadas son de pago"]
     },
     {
         name: "Scholarcy",
@@ -157,7 +241,13 @@ const tools = [
         link: "https://scholarcy.com",
         bestFor: "Resumir papers y artículos académicos extensos",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado"
+        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado",
+        rating: 7.9,
+        speed: "media",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Resume papers académicos complejos", "Extrae ideas clave automáticamente"],
+        cons: ["Límite de resúmenes en versión gratis", "Enfocado solo en textos académicos"]
     },
     {
         name: "Mapify",
@@ -167,7 +257,13 @@ const tools = [
         link: "https://mapify.so",
         bestFor: "Convertir apuntes en mapas mentales visuales",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; plan de pago para más mapas"
+        pricingDetail: "Gratis con límites; plan de pago para más mapas",
+        rating: 8.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Genera mapas mentales desde texto en segundos", "Interfaz visual muy clara y atractiva"],
+        cons: ["Límite de mapas en versión gratis", "Exportación limitada sin plan de pago"]
     },
     {
         name: "Zotero",
@@ -177,7 +273,13 @@ const tools = [
         link: "https://zotero.org",
         bestFor: "Gestionar bibliografía y citas para trabajos académicos",
         easeOfUse: "Intermedio",
-        pricingDetail: "Gratis, con almacenamiento extra de pago opcional"
+        pricingDetail: "Gratis, con almacenamiento extra de pago opcional",
+        rating: 8.4,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["100% gratis", "Gestión de citas muy completa", "Plugin para Word disponible"],
+        cons: ["Interfaz algo anticuada", "Curva de aprendizaje inicial para nuevos usuarios"]
     },
     {
         name: "Mendeley",
@@ -187,7 +289,13 @@ const tools = [
         link: "https://mendeley.com",
         bestFor: "Buscar papers científicos y organizar referencias",
         easeOfUse: "Intermedio",
-        pricingDetail: "Gratis, con planes de almacenamiento adicional"
+        pricingDetail: "Gratis, con planes de almacenamiento adicional",
+        rating: 8.0,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["Base de datos de papers científicos incluida", "Gestión de referencias muy completa"],
+        cons: ["Almacenamiento limitado en versión gratis", "Requiere instalación de la aplicación"]
     },
     {
         name: "Wolfram Alpha",
@@ -197,7 +305,13 @@ const tools = [
         link: "https://wolframalpha.com",
         bestFor: "Resolver matemática, física y problemas científicos paso a paso",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; plan Pro de pago"
+        pricingDetail: "Gratis con límites; plan Pro de pago",
+        rating: 9.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏆 Editor favorito"],
+        pros: ["Resolución de matemática paso a paso", "Cálculos muy precisos y confiables", "Gratis para uso básico"],
+        cons: ["Explicaciones detalladas son de pago", "Interfaz poco intuitiva para principiantes"]
     },
     {
         name: "Nerd AI",
@@ -207,7 +321,13 @@ const tools = [
         link: "https://nerd-ai.com",
         bestFor: "Generar cuestionarios y resúmenes desde tus apuntes",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado"
+        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado",
+        rating: 7.6,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Escanea documentos con la cámara", "Genera cuestionarios automáticos para estudiar"],
+        cons: ["Límite de escaneos en versión gratis", "Requiere la app móvil instalada"]
     },
     {
         name: "Socratic",
@@ -217,7 +337,13 @@ const tools = [
         link: "https://socratic.org",
         bestFor: "Resolver dudas de cualquier materia escolar",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis"
+        pricingDetail: "Gratis",
+        rating: 8.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["100% gratis", "Explica paso a paso cualquier materia", "Muy intuitivo para estudiantes"],
+        cons: ["Requiere la app de Google", "Funciona mejor con preguntas en inglés"]
     },
     {
         name: "Quizlet AI",
@@ -227,7 +353,13 @@ const tools = [
         link: "https://quizlet.com",
         bestFor: "Crear tarjetas de estudio y practicar para exámenes",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan Plus de pago"
+        pricingDetail: "Gratis con límites; plan Plus de pago",
+        rating: 8.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Tarjetas de estudio muy efectivas", "IA que genera tarjetas desde tus apuntes", "Gran comunidad de estudiantes"],
+        cons: ["Funciones de IA requieren plan Plus de pago", "Publicidad en versión gratis"]
     },
     {
         name: "Gradescope",
@@ -237,7 +369,13 @@ const tools = [
         link: "https://gradescope.com",
         bestFor: "Calificar exámenes y trabajos de forma asistida",
         easeOfUse: "Intermedio",
-        pricingDetail: "Gratis para estudiantes; planes institucionales de pago"
+        pricingDetail: "Gratis para estudiantes; planes institucionales de pago",
+        rating: 7.7,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["Calificación asistida por IA muy eficiente", "Ahorra mucho tiempo a los docentes"],
+        cons: ["Orientado principalmente a docentes", "Requiere configuración institucional"]
     },
     {
         name: "Tutor.ai",
@@ -247,7 +385,13 @@ const tools = [
         link: "https://tutor.ai",
         bestFor: "Recibir explicaciones detalladas de temas difíciles",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan de pago para más consultas"
+        pricingDetail: "Gratis con límites; plan de pago para más consultas",
+        rating: 7.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Explicaciones muy detalladas de cualquier tema", "Muy accesible para principiantes"],
+        cons: ["Respuestas limitadas en versión gratis", "Sin adaptación a materias locales argentinas"]
     },
     {
         name: "LanguageTool",
@@ -257,7 +401,13 @@ const tools = [
         link: "https://languagetool.org",
         bestFor: "Corregir gramática y estilo en varios idiomas",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan Premium de pago"
+        pricingDetail: "Gratis con límites; plan Premium de pago",
+        rating: 8.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Corrección en español muy buena", "Plugin para navegador y Word disponible", "Versión gratis muy útil"],
+        cons: ["Funciones avanzadas de estilo son de pago", "Menos conocido que Grammarly"]
     },
     {
         name: "Goblin.tools",
@@ -267,7 +417,13 @@ const tools = [
         link: "https://goblin.tools",
         bestFor: "Dividir tareas grandes en pasos pequeños y manejables",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis"
+        pricingDetail: "Gratis",
+        rating: 8.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["100% gratis y sin registro", "Desglose de tareas muy simple", "Muy útil para personas con TDAH"],
+        cons: ["Funciones muy específicas y limitadas", "Solo sirve para dividir tareas simples"]
     },
     {
         name: "Mealime",
@@ -277,7 +433,13 @@ const tools = [
         link: "https://www.mealime.com",
         bestFor: "Planificar comidas semanales y listas de compras",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con funciones básicas; plan Pro de pago"
+        pricingDetail: "Gratis con funciones básicas; plan Pro de pago",
+        rating: 8.2,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Planificación semanal muy simple", "Lista de compras automática", "Versión gratis funcional"],
+        cons: ["Base de recetas limitada en versión gratis", "Interfaz principalmente en inglés"]
     },
     {
         name: "Sweepy",
@@ -288,7 +450,13 @@ const tools = [
         isPro: false,
         bestFor: "Organizar la limpieza del hogar por habitaciones",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis"
+        pricingDetail: "Gratis",
+        rating: 7.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["100% gratis", "Organización por habitaciones muy clara", "Interfaz muy visual"],
+        cons: ["Sin funciones de IA avanzada", "Solo disponible como app para celular"]
     },
     {
         name: "Homestyler",
@@ -298,7 +466,13 @@ const tools = [
         link: "https://www.homestyler.com",
         bestFor: "Probar decoración y remodelación de espacios virtualmente",
         easeOfUse: "Fácil",
-        pricingDetail: "Gratis con límites; planes de pago para más diseños"
+        pricingDetail: "Gratis con límites; planes de pago para más diseños",
+        rating: 8.3,
+        speed: "media",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Prueba decoración virtualmente sin gastar", "Catálogo de muebles reales incluido", "Versión gratis disponible"],
+        cons: ["El renderizado puede ser lento", "Funciones avanzadas son de pago"]
     },
     {
         name: "Microsoft To Do",
@@ -308,7 +482,13 @@ const tools = [
         link: "https://todo.microsoft.com",
         bestFor: "Organizar listas de tareas personales del día a día",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis"
+        pricingDetail: "Gratis",
+        rating: 8.7,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["100% gratis", "Integrado con Microsoft 365 y Outlook", "Muy simple e intuitivo"],
+        cons: ["Sin funciones de IA avanzada", "Sincronización solo con cuenta Microsoft"]
     },
     {
         name: "Google Keep",
@@ -318,7 +498,13 @@ const tools = [
         link: "https://keep.google.com",
         bestFor: "Anotar ideas y notas rápidas organizadas por color",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis"
+        pricingDetail: "Gratis",
+        rating: 8.4,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["100% gratis", "Integrado con toda la cuenta de Google", "Acceso desde cualquier dispositivo"],
+        cons: ["Sin funciones de organización avanzada", "Interfaz muy básica para proyectos complejos"]
     },
     {
         name: "Bing Image Creator",
@@ -328,7 +514,13 @@ const tools = [
         link: "https://www.bing.com/images/create",
         bestFor: "Generar imágenes a partir de una descripción de texto",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites diarios de generaciones"
+        pricingDetail: "Gratis con límites diarios de generaciones",
+        rating: 8.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Genera imágenes muy realistas", "100% gratis con cuenta Microsoft", "Soporta prompts en español"],
+        cons: ["Límite diario de generaciones gratis", "No permite editar las imágenes generadas"]
     },
     {
         name: "CapCut",
@@ -338,7 +530,13 @@ const tools = [
         link: "https://www.capcut.com",
         bestFor: "Editar videos cortos para redes sociales",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con plantillas limitadas; plan Pro de pago"
+        pricingDetail: "Gratis con plantillas limitadas; plan Pro de pago",
+        rating: 9.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular", "🏆 Editor favorito"],
+        pros: ["Edición muy fácil e intuitiva", "Plantillas de tendencia incluidas", "Excelente para redes sociales"],
+        cons: ["Funciones Pro son de pago", "Algunas plantillas llevan marca de agua"]
     },
     {
         name: "Photopea",
@@ -349,7 +547,13 @@ const tools = [
         isPro: false,
         bestFor: "Editar imágenes con herramientas tipo Photoshop, gratis",
         easeOfUse: "Intermedio",
-        pricingDetail: "Gratis (con anuncios); versión sin anuncios de pago"
+        pricingDetail: "Gratis (con anuncios); versión sin anuncios de pago",
+        rating: 8.7,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["100% gratis y sin registro", "Funciones tipo Photoshop completas", "Abre archivos PSD directamente"],
+        cons: ["Interfaz compleja para principiantes", "Con publicidad en versión gratis"]
     },
     {
         name: "LuzIA",
@@ -359,7 +563,13 @@ const tools = [
         link: "https://www.luzia.com",
         bestFor: "Consultas rápidas directo desde WhatsApp",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado"
+        pricingDetail: "Gratis con límites; plan de pago para uso ilimitado",
+        rating: 8.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular", "🚀 IA nueva"],
+        pros: ["Funciona directo en WhatsApp", "Sin instalar apps adicionales", "Perfecto español argentino"],
+        cons: ["Límite de consultas gratis por día", "Requiere tener WhatsApp activo"]
     },
     {
         name: "CamScanner",
@@ -369,96 +579,150 @@ const tools = [
         link: "https://www.camscanner.com",
         bestFor: "Escanear y mejorar documentos con la cámara del celular",
         easeOfUse: "Muy fácil",
-        pricingDetail: "Gratis con límites; plan Premium de pago"
+        pricingDetail: "Gratis con límites; plan Premium de pago",
+        rating: 8.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Escaneo de documentos muy rápido", "Mejora la calidad automáticamente", "Exporta a PDF sin problema"],
+        cons: ["Funciones avanzadas son de pago", "Con publicidad en versión gratis"]
     },
     {
-    name: "Entre Ríos Digital",
-    category: "Trámites y Consultas",
-    description: "Plataforma oficial para realizar gestiones, solicitar turnos y consultar trámites provinciales.",
-    icon: "🏛️",
-    link: "https://www.entrerios.gov.ar",
-    isPro: false,
-    bestFor: "Hacer trámites y pedir turnos con la provincia",
-    easeOfUse: "Fácil",
-    pricingDetail: "Gratis (sitio oficial del gobierno provincial)"
+        name: "Entre Ríos Digital",
+        category: "Trámites y Consultas",
+        description: "Plataforma oficial para realizar gestiones, solicitar turnos y consultar trámites provinciales.",
+        icon: "🏛️",
+        link: "https://www.entrerios.gov.ar",
+        isPro: false,
+        bestFor: "Hacer trámites y pedir turnos con la provincia",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis (sitio oficial del gobierno provincial)",
+        rating: 7.5,
+        speed: "media",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Trámites oficiales 100% online", "Sin necesidad de moverse de casa", "Completamente gratis"],
+        cons: ["Algunos trámites aún requieren presencia física", "Interfaz puede ser lenta"]
     },
     {
-    name: "Xubio",
-    category: "Trámites y Consultas",
-    description: "Gestión contable y facturación electrónica en la nube. Ideal para mantener tus impuestos al día.",
-    icon: "🧾",
-    link: "https://xubio.com/",
-    isPro: false,
-    bestFor: "Facturación electrónica y gestión contable de tu negocio",
-    easeOfUse: "Intermedio",
-    pricingDetail: "Plan gratuito limitado; planes de pago según tamaño del negocio"
+        name: "Xubio",
+        category: "Trámites y Consultas",
+        description: "Gestión contable y facturación electrónica en la nube. Ideal para mantener tus impuestos al día.",
+        icon: "🧾",
+        link: "https://xubio.com/",
+        isPro: false,
+        bestFor: "Facturación electrónica y gestión contable de tu negocio",
+        easeOfUse: "Intermedio",
+        pricingDetail: "Plan gratuito limitado; planes de pago según tamaño del negocio",
+        rating: 7.8,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["Facturación electrónica desde la nube", "Integrado con AFIP", "Interfaz en español argentino"],
+        cons: ["Plan gratis muy limitado en funciones", "Precio elevado para planes avanzados"]
     },
     {
-    name: "Claude Code",
-    category: "IA Avanzada",
-    description: "Agente de codificación en tu terminal que analiza, edita y prueba toda tu base de código.",
-    icon: "⚡",
-    link: "https://code.claude.com/",
-    isPro: true,
-    bestFor: "Programar y automatizar tareas técnicas complejas",
-    easeOfUse: "Requiere algo de experiencia técnica",
-    pricingDetail: "Créditos gratis diarios; planes de pago para uso intensivo"
+        name: "Claude Code",
+        category: "IA Avanzada",
+        description: "Agente de codificación en tu terminal que analiza, edita y prueba toda tu base de código.",
+        icon: "⚡",
+        link: "https://code.claude.com/",
+        isPro: true,
+        bestFor: "Programar y automatizar tareas técnicas complejas",
+        easeOfUse: "Requiere algo de experiencia técnica",
+        pricingDetail: "Créditos gratis diarios; planes de pago para uso intensivo",
+        rating: 9.0,
+        speed: "potente",
+        difficulty: "avanzada",
+        labels: ["🚀 IA nueva", "💎 Premium"],
+        pros: ["Comprende toda la base de código del proyecto", "Muy preciso para programación", "Trabaja directamente en la terminal"],
+        cons: ["Requiere conocimientos técnicos", "Créditos gratis se agotan rápido"]
     },
     {
-    name: "Gemini Advanced",
-    category: "IA Avanzada", // Nueva categoría
-    description: "Análisis de datos complejo y razonamiento lógico.",
-    icon: "🚀",
-    link: "https://aistudio.google.com/",
-    isPro: true, // Etiqueta para el diseño
-    bestFor: "Análisis de datos y razonamiento con contexto extenso",
-    easeOfUse: "Fácil, integrado con Google",
-    pricingDetail: "Créditos gratis diarios; plan Google One AI Premium de pago"
+        name: "Gemini Advanced",
+        category: "IA Avanzada",
+        description: "Análisis de datos complejo y razonamiento lógico.",
+        icon: "🚀",
+        link: "https://aistudio.google.com/",
+        isPro: true,
+        bestFor: "Análisis de datos y razonamiento con contexto extenso",
+        easeOfUse: "Fácil, integrado con Google",
+        pricingDetail: "Créditos gratis diarios; plan Google One AI Premium de pago",
+        rating: 9.4,
+        speed: "potente",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "💎 Premium"],
+        pros: ["Razonamiento lógico muy avanzado", "Contexto muy extenso para analizar documentos", "Integrado con toda la suite de Google"],
+        cons: ["Plan premium de pago para acceso completo", "Menos popular que ChatGPT por ahora"]
     },
     {
-    name: "Cursor",
-    category: "IA Avanzada",
-    description: "Editor de código inteligente con agentes que entienden el contexto de todo tu proyecto.",
-    icon: "💻",
-    link: "https://cursor.sh/",
-    isPro: true,
-    bestFor: "Programar con un editor que entiende todo tu proyecto",
-    easeOfUse: "Requiere experiencia técnica",
-    pricingDetail: "Créditos gratis limitados; planes de pago para uso intensivo"
+        name: "Cursor",
+        category: "IA Avanzada",
+        description: "Editor de código inteligente con agentes que entienden el contexto de todo tu proyecto.",
+        icon: "💻",
+        link: "https://cursor.sh/",
+        isPro: true,
+        bestFor: "Programar con un editor que entiende todo tu proyecto",
+        easeOfUse: "Requiere experiencia técnica",
+        pricingDetail: "Créditos gratis limitados; planes de pago para uso intensivo",
+        rating: 9.1,
+        speed: "potente",
+        difficulty: "avanzada",
+        labels: ["🔥 Muy popular", "💎 Premium"],
+        pros: ["Entiende todo el contexto del proyecto", "Autocompletado de IA muy preciso", "Editor completo tipo VS Code"],
+        cons: ["Requiere experiencia técnica en programación", "Plan pago para uso intensivo"]
     },
     {
-    name: "Streamlit",
-    category: "IA Avanzada",
-    description: "Creá aplicaciones web interactivas para datos usando solo Python, sin tocar HTML o CSS.",
-    icon: "📊",
-    link: "https://streamlit.io/",
-    isPro: true,
-    bestFor: "Crear apps de datos interactivas sabiendo Python",
-    easeOfUse: "Requiere conocimientos de programación",
-    pricingDetail: "Gratis (open source); hosting en la nube de pago opcional"
+        name: "Streamlit",
+        category: "IA Avanzada",
+        description: "Creá aplicaciones web interactivas para datos usando solo Python, sin tocar HTML o CSS.",
+        icon: "📊",
+        link: "https://streamlit.io/",
+        isPro: true,
+        bestFor: "Crear apps de datos interactivas sabiendo Python",
+        easeOfUse: "Requiere conocimientos de programación",
+        pricingDetail: "Gratis (open source); hosting en la nube de pago opcional",
+        rating: 7.8,
+        speed: "media",
+        difficulty: "avanzada",
+        labels: [],
+        pros: ["Crear apps de datos sin saber HTML/CSS", "Open source y completamente gratis", "Gran comunidad de usuarios Python"],
+        cons: ["Requiere conocimientos de Python", "Hosting avanzado es de pago"]
     },
     {
-    name: "NotebookLM",
-    category: "IA Avanzada",
-    description: "Asistente de investigación que analiza tus documentos y crea resúmenes, informes o pódcasts.",
-    icon: "🧠",
-    link: "https://notebooklm.google/",
-    isPro: true,
-    bestFor: "Investigar y resumir tus propios documentos en profundidad",
-    easeOfUse: "Fácil",
-    pricingDetail: "Créditos gratis diarios; plan Google One AI Premium de pago"
+        name: "NotebookLM",
+        category: "IA Avanzada",
+        description: "Asistente de investigación que analiza tus documentos y crea resúmenes, informes o pódcasts.",
+        icon: "🧠",
+        link: "https://notebooklm.google/",
+        isPro: true,
+        bestFor: "Investigar y resumir tus propios documentos en profundidad",
+        easeOfUse: "Fácil",
+        pricingDetail: "Créditos gratis diarios; plan Google One AI Premium de pago",
+        rating: 9.2,
+        speed: "media",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "💎 Premium"],
+        pros: ["Analiza tus propios documentos a fondo", "Genera pódcasts automáticamente", "Resúmenes muy precisos y fiables"],
+        cons: ["Requiere subir tus propios documentos", "Uso intensivo requiere plan premium"]
     },
     {
-    name: "Cloudflare Radar",
-    category: "IA Avanzada",
-    description: "Monitoreo inteligente del estado de internet para navegar de forma más segura y consciente.",
-    icon: "🌐",
-    link: "https://radar.cloudflare.com/",
-    isPro: false,
-    bestFor: "Monitorear el estado de internet y la seguridad de la red",
-    easeOfUse: "Intermedio",
-    pricingDetail: "Gratis"
-   }
+        name: "Cloudflare Radar",
+        category: "IA Avanzada",
+        description: "Monitoreo inteligente del estado de internet para navegar de forma más segura y consciente.",
+        icon: "🌐",
+        link: "https://radar.cloudflare.com/",
+        isPro: false,
+        bestFor: "Monitorear el estado de internet y la seguridad de la red",
+        easeOfUse: "Intermedio",
+        pricingDetail: "Gratis",
+        rating: 7.3,
+        speed: "rapida",
+        difficulty: "media",
+        labels: [],
+        pros: ["Datos de internet en tiempo real", "100% gratis", "Muy útil para seguridad de red"],
+        cons: ["Útil principalmente para usuarios técnicos", "Interfaz principalmente en inglés"]
+    }
 ];
 
 // 1.b Mapa de categorías a su "slug" de color (usado en CSS vía data-category-color)
@@ -490,10 +754,6 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
         const proLabel = tool.isPro ?
             '<span class="badge-pro">⚡ PRO</span>' : '';
 
-        // Badge de precio: "PRO" indica complejidad/potencia, no necesariamente costo.
-        // Las herramientas PRO suelen tener créditos diarios gratis, así que mostramos
-        // PRO + Freemium juntas (son dos datos distintos: qué tan avanzada es,
-        // y qué tan accesible es el precio). Las que no son PRO muestran solo "Gratis".
         const pricingLabel = tool.isPro ?
             '<span class="badge-pricing is-freemium">Freemium</span>' :
             '<span class="badge-pricing is-free">Gratis</span>';
@@ -510,6 +770,29 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
             </button>
         `;
 
+        // Rating: estrellas + número
+        const ratingHtml = tool.rating ? (() => {
+            const r = tool.rating;
+            const full = Math.floor(r / 2);
+            const half = (r / 2 - full) >= 0.4 ? 1 : 0;
+            const empty = 5 - full - half;
+            const stars = '⭐'.repeat(full) + (half ? '✨' : '') + '☆'.repeat(empty);
+            return `<div class="tool-rating"><span class="rating-stars">${stars}</span><span class="rating-score">${r}</span></div>`;
+        })() : '';
+
+        // Velocidad
+        const speedMap = { rapida: '⚡ Muy rápida', media: '⚡⚡ Media', potente: '⚡⚡⚡ Muy potente' };
+        const speedHtml = tool.speed ? `<span class="tool-badge badge-speed">${speedMap[tool.speed] || tool.speed}</span>` : '';
+
+        // Dificultad
+        const diffMap = { facil: '🟢 Fácil', media: '🟡 Media', avanzada: '🔴 Avanzada' };
+        const diffHtml = tool.difficulty ? `<span class="tool-badge badge-diff">${diffMap[tool.difficulty] || tool.difficulty}</span>` : '';
+
+        // Etiquetas especiales
+        const labelsHtml = (tool.labels && tool.labels.length > 0)
+            ? `<div class="tool-labels">${tool.labels.map(l => `<span class="tool-label">${l}</span>`).join('')}</div>`
+            : '';
+
         const card = document.createElement('div');
         card.className = "tool-card";
         card.style.animationDelay = `${(index % 12) * 0.06}s`;
@@ -523,6 +806,9 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
                 <div class="tool-icon-badge">${tool.icon}</div>
                 ${categoryTag}
                 <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
+                ${ratingHtml}
+                ${labelsHtml}
+                <div class="tool-meta-badges">${speedHtml}${diffHtml}</div>
                 <p class="text-gray-600 mb-4">${tool.description}</p>
                 <a href="${tool.link}" target="_blank" rel="noopener" class="tool-try-btn">
                     Probar herramienta <span class="arrow">→</span>
@@ -537,6 +823,8 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
 // 3. Variables de Estado
 let currentCategory = 'all';
 let searchQuery = '';
+let currentDifficulty = 'all';
+let currentSpeed = 'all';
 
 // 4. Lógica de Filtrado y Búsqueda combinada
 function filterAndSearch() {
@@ -544,7 +832,9 @@ function filterAndSearch() {
         const matchesCategory = currentCategory === 'all' || tool.category === currentCategory;
         const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                              tool.description.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchesCategory && matchesSearch;
+        const matchesDiff = currentDifficulty === 'all' || tool.difficulty === currentDifficulty;
+        const matchesSpeed = currentSpeed === 'all' || tool.speed === currentSpeed;
+        return matchesCategory && matchesSearch && matchesDiff && matchesSpeed;
     });
     renderTools(filtered);
 }
@@ -567,9 +857,29 @@ filterButtons.forEach(button => {
 
 // 6. Evento de Búsqueda
 const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    filterAndSearch();
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        filterAndSearch();
+    });
+}
+
+// 6.a Filtros rápidos (dificultad y velocidad)
+document.querySelectorAll('.qf-diff').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.qf-diff').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentDifficulty = btn.getAttribute('data-diff');
+        filterAndSearch();
+    });
+});
+document.querySelectorAll('.qf-speed').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.qf-speed').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentSpeed = btn.getAttribute('data-speed');
+        filterAndSearch();
+    });
 });
 
 // 6.b Autocompletado inteligente del buscador
@@ -627,20 +937,21 @@ function seleccionarAutocomplete(index) {
     filterAndSearch();
     guardarEnHistorial(tool.name);
     closeAutocomplete();
-    document.getElementById('categorias').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('categorias')?.scrollIntoView({ behavior: 'smooth' });
 }
 
-searchInput.addEventListener('input', (e) => {
-    renderAutocomplete(e.target.value);
-});
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        renderAutocomplete(e.target.value);
+    });
 
-// Navegación del autocompletado con teclado (flechas + Enter + Escape)
-searchInput.addEventListener('keydown', (e) => {
-    if (!autocompleteList || !autocompleteList.classList.contains('is-open')) return;
-    const items = autocompleteList.querySelectorAll('.autocomplete-item');
+    // Navegación del autocompletado con teclado (flechas + Enter + Escape)
+    searchInput.addEventListener('keydown', (e) => {
+        if (!autocompleteList || !autocompleteList.classList.contains('is-open')) return;
+        const items = autocompleteList.querySelectorAll('.autocomplete-item');
 
-    if (e.key === 'ArrowDown') {
-        e.preventDefault();
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
         acActiveIndex = Math.min(acActiveIndex + 1, items.length - 1);
     } else if (e.key === 'ArrowUp') {
         e.preventDefault();
@@ -659,7 +970,8 @@ searchInput.addEventListener('keydown', (e) => {
     }
 
     items.forEach((item, i) => item.classList.toggle('is-active', i === acActiveIndex));
-});
+    });
+}
 
 // Cerrar el autocompletado al hacer click afuera
 document.addEventListener('click', (e) => {
@@ -672,20 +984,22 @@ document.addEventListener('click', (e) => {
 const suggestBtn = document.getElementById('suggest-tool-btn');
 const suggestionSection = document.getElementById('suggestion-section');
 
-suggestBtn.addEventListener('click', () => {
-    suggestionSection.classList.toggle('hidden');
-    
-    if (!suggestionSection.classList.contains('hidden')) {
-        suggestionSection.scrollIntoView({ behavior: 'smooth' });
-        suggestBtn.innerHTML = '❌ Cerrar Formulario';
-        suggestBtn.classList.replace('bg-green-600', 'bg-red-600');
-        suggestBtn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
-    } else {
-        suggestBtn.innerHTML = '💡 Sugerir Herramienta';
-        suggestBtn.classList.replace('bg-red-600', 'bg-green-600');
-        suggestBtn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
-    }
-});
+if (suggestBtn && suggestionSection) {
+    suggestBtn.addEventListener('click', () => {
+        suggestionSection.classList.toggle('hidden');
+
+        if (!suggestionSection.classList.contains('hidden')) {
+            suggestionSection.scrollIntoView({ behavior: 'smooth' });
+            suggestBtn.innerHTML = '❌ Cerrar Formulario';
+            suggestBtn.classList.replace('bg-green-600', 'bg-red-600');
+            suggestBtn.classList.replace('hover:bg-green-700', 'hover:bg-red-700');
+        } else {
+            suggestBtn.innerHTML = '💡 Sugerir Herramienta';
+            suggestBtn.classList.replace('bg-red-600', 'bg-green-600');
+            suggestBtn.classList.replace('hover:bg-red-700', 'hover:bg-green-700');
+        }
+    });
+}
 
 // 8. Lógica de FAQ (Acordeón)
 const faqQuestions = document.querySelectorAll('.faq-question');
@@ -732,7 +1046,7 @@ function handleDarkModeToggle() {
     syncDarkModeButtons(isDark);
 }
 
-darkModeToggle.addEventListener('click', handleDarkModeToggle);
+if (darkModeToggle) darkModeToggle.addEventListener('click', handleDarkModeToggle);
 if (navDarkToggle) navDarkToggle.addEventListener('click', handleDarkModeToggle);
 
 // 10. Sección de Favoritos del usuario
@@ -745,7 +1059,7 @@ function renderFavoritesSection() {
 
     if (favTools.length === 0) {
         favSection.classList.add('is-empty');
-        document.getElementById('favorites-container').innerHTML = '';
+        const favContainer = document.getElementById('favorites-container'); if (favContainer) favContainer.innerHTML = '';
     } else {
         favSection.classList.remove('is-empty');
         renderTools(favTools, 'favorites-container');
@@ -809,15 +1123,17 @@ function aplicarHistorial(term) {
     searchQuery = term;
     filterAndSearch();
     closeAutocomplete();
-    document.getElementById('categorias').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('categorias')?.scrollIntoView({ behavior: 'smooth' });
 }
 
 // Guardamos en el historial cuando el usuario deja de tipear (debounce simple)
 let historialTimeout;
-searchInput.addEventListener('input', () => {
-    clearTimeout(historialTimeout);
-    historialTimeout = setTimeout(() => guardarEnHistorial(searchInput.value), 900);
-});
+if (searchInput) {
+    searchInput.addEventListener('input', () => {
+        clearTimeout(historialTimeout);
+        historialTimeout = setTimeout(() => guardarEnHistorial(searchInput.value), 900);
+    });
+}
 
 // 13. Animación de aparición al hacer scroll (IntersectionObserver)
 function initScrollReveal() {
@@ -1103,13 +1419,68 @@ function renderComparacion(nombres) {
         return;
     }
 
+    const speedMap = { rapida: '⚡ Muy rápida', media: '⚡⚡ Media', potente: '⚡⚡⚡ Muy potente' };
+    const diffMap = { facil: '🟢 Fácil', media: '🟡 Media', avanzada: '🔴 Avanzada' };
+
     const filas = [
         { label: "Categoría", get: t => t.category },
+        { label: "Puntuación", get: t => {
+            if (!t.rating) return '—';
+            const r = t.rating;
+            const full = Math.floor(r / 2);
+            const half = (r / 2 - full) >= 0.4 ? 1 : 0;
+            const empty = 5 - full - half;
+            const stars = '⭐'.repeat(full) + (half ? '✨' : '') + '☆'.repeat(empty);
+            return `<span class="comp-rating">${stars} <strong>${r}/10</strong></span>`;
+        }},
+        { label: "Velocidad", get: t => t.speed ? speedMap[t.speed] || t.speed : '—' },
+        { label: "Dificultad", get: t => t.difficulty ? diffMap[t.difficulty] || t.difficulty : '—' },
         { label: "Mejor para", get: t => t.bestFor || "—" },
         { label: "Facilidad de uso", get: t => t.easeOfUse || "—" },
         { label: "Precio", get: t => t.pricingDetail || (t.isPro ? "Freemium (créditos gratis diarios)" : "Gratis") },
-        { label: "Complejidad", get: t => t.isPro ? "⚡ Avanzada (PRO)" : "Básica, apta para todos" },
     ];
+
+    // Pros y contras por columna
+    const prosConsHtml = `
+        <tr class="comp-pros-row">
+            <td class="comparison-row-label">✅ Pros</td>
+            ${seleccionadas.map(t => `
+                <td>
+                    <ul class="comp-pros-list">
+                        ${(t.pros || []).map(p => `<li>✅ ${p}</li>`).join('')}
+                    </ul>
+                </td>
+            `).join('')}
+        </tr>
+        <tr class="comp-cons-row">
+            <td class="comparison-row-label">❌ Contras</td>
+            ${seleccionadas.map(t => `
+                <td>
+                    <ul class="comp-cons-list">
+                        ${(t.cons || []).map(c => `<li>❌ ${c}</li>`).join('')}
+                    </ul>
+                </td>
+            `).join('')}
+        </tr>
+    `;
+
+    // Nuestra recomendación: la herramienta con mayor rating
+    const ganadora = seleccionadas.reduce((prev, curr) => (curr.rating || 0) > (prev.rating || 0) ? curr : prev);
+    const diffLabel = ganadora.difficulty ? diffMap[ganadora.difficulty] : '';
+    const speedLabel = ganadora.speed ? speedMap[ganadora.speed] : '';
+    const recomendacionHtml = `
+        <div class="comp-recommendation">
+            <div class="comp-rec-crown">🥇 Nuestra recomendación</div>
+            <div class="comp-rec-winner">
+                <span class="comp-rec-icon">${ganadora.icon}</span>
+                <span class="comp-rec-name">${ganadora.name}</span>
+            </div>
+            <p class="comp-rec-reason">
+                Con una puntuación de <strong>${ganadora.rating}/10</strong>, <strong>${ganadora.name}</strong> ofrece 
+                el mejor equilibrio entre ${diffLabel ? diffLabel + ', ' : ''}${speedLabel ? speedLabel.toLowerCase() + ' y ' : ''}precio y facilidad de uso entre las opciones comparadas.
+            </p>
+        </div>
+    `;
 
     resultEl.innerHTML = `
         <table class="comparison-table">
@@ -1121,6 +1492,7 @@ function renderComparacion(nombres) {
                             <div class="comparison-tool-header">
                                 <span class="comparison-tool-icon">${t.icon}</span>
                                 <span class="comparison-tool-name">${t.name}</span>
+                                ${t.rating ? `<span class="comp-header-rating">⭐ ${t.rating}/10</span>` : ''}
                                 <a href="${t.link}" target="_blank" rel="noopener" class="comparison-tool-link">Visitar →</a>
                             </div>
                         </th>
@@ -1134,12 +1506,14 @@ function renderComparacion(nombres) {
                         ${seleccionadas.map(t => `<td>${fila.get(t)}</td>`).join('')}
                     </tr>
                 `).join('')}
+                ${prosConsHtml}
                 <tr>
                     <td class="comparison-row-label">Descripción</td>
                     ${seleccionadas.map(t => `<td class="text-sm text-gray-500">${t.description}</td>`).join('')}
                 </tr>
             </tbody>
         </table>
+        ${recomendacionHtml}
     `;
 
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1209,6 +1583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroCounters();
     initHeroNetwork();
     initComparador();
+    initChatForm();
 });
 
 if ('serviceWorker' in navigator) {
@@ -1338,6 +1713,62 @@ const faqChat = [
     {
         triggers: ["las herramientas estan en español", "las herramientas están en español", "tengo que saber ingles", "tengo que saber inglés", "se puede usar en español"],
         respuesta: "La mayoría funciona perfectamente en español, aunque algunas interfaces pueden mostrarse en inglés al principio — generalmente podés cambiar el idioma desde la configuración de cada herramienta. 🌐"
+    },
+    {
+        triggers: ["como uso el comparador", "cómo uso el comparador", "que es el comparador", "qué es el comparador", "como comparo herramientas", "cómo comparo herramientas"],
+        respuesta: "En la sección <strong>⚖️ Comparador de Herramientas</strong> podés elegir 2 o 3 herramientas de los menús desplegables y ver una tabla lado a lado con para qué sirve cada una, qué tan fácil es de usar y su precio. También hay comparaciones ya armadas como accesos rápidos arriba. 📊"
+    },
+    {
+        triggers: ["que son las tendencias", "qué son las tendencias", "que significa tendencias", "qué significa tendencias"],
+        respuesta: "La sección <strong>🔥 Tendencias</strong> muestra las herramientas más destacadas y avanzadas del directorio en este momento. Es un buen lugar para empezar si querés ver lo más potente que tenemos. ✨"
+    },
+    {
+        triggers: ["que es el historial", "qué es el historial", "para que sirve el historial", "para qué sirve el historial", "borrar historial", "como borro el historial"],
+        respuesta: "Debajo del buscador vas a ver chips con tus últimas búsquedas, para volver a usarlas con un toque. Se guardan solo en tu navegador; si borrás los datos del sitio en la configuración de tu navegador, se borra también el historial. 🕘"
+    },
+    {
+        triggers: ["hay publicidad", "tiene anuncios", "por que hay un espacio de publicidad", "por qué hay un espacio de publicidad", "adsense"],
+        respuesta: "El sitio es gratuito y se sostiene en parte con publicidad discreta, pero nunca interfiere con el uso del directorio ni promociona herramientas que no estén realmente en la lista. 📰"
+    },
+    {
+        triggers: ["que herramienta me recomendas para estudiar", "qué herramienta me recomendás para estudiar", "soy estudiante", "estoy en la facultad", "que uso para la facultad", "qué uso para la facultad"],
+        respuesta: "Para estudiar te recomiendo empezar con <strong>Quizlet AI</strong> para repasar con tarjetas, <strong>Mapify</strong> para armar mapas mentales de tus apuntes, y <strong>Wolfram Alpha</strong> si necesitás resolver matemática o física paso a paso. 🎓"
+    },
+    {
+        triggers: ["que herramienta me recomendas para trabajar", "qué herramienta me recomendás para trabajar", "trabajo desde casa", "soy freelance", "trabajo remoto que uso", "trabajo remoto qué uso"],
+        respuesta: "Para el trabajo del día a día, <strong>ChatGPT</strong> es muy versátil para escribir y organizar ideas, <strong>Trello</strong> te ayuda a planificar tareas, y si tenés muchas reuniones, <strong>Fireflies.ai</strong> te transcribe todo automáticamente. 💼"
+    },
+    {
+        triggers: ["que herramienta me recomendas para diseño", "qué herramienta me recomendás para diseño", "quiero hacer un diseño", "necesito un logo", "necesito una imagen"],
+        respuesta: "Para diseño, <strong>Canva</strong> es la más fácil para presentaciones y redes sociales. Si necesitás generar una imagen desde cero con una descripción de texto, probá <strong>Bing Image Creator</strong>. Para edición más avanzada y gratis, <strong>Photopea</strong> funciona como un Photoshop en el navegador. 🎨"
+    },
+    {
+        triggers: ["soy jubilado", "soy adulto mayor", "no entiendo de tecnologia", "no entiendo de tecnología", "soy grande para esto", "es dificil", "es difícil"],
+        respuesta: "¡Para nada es difícil! Te recomiendo arrancar con <strong>LuzIA</strong>, que funciona directo en tu WhatsApp y le podés preguntar lo que sea como si fuera un mensaje a un conocido. También <strong>ChatGPT</strong> es muy simple: escribís lo que necesitás y te responde. 🙂"
+    },
+    {
+        triggers: ["una herramienta no funciona", "el link no funciona", "no abre la pagina", "no abre la página", "esta rota", "está rota", "no carga"],
+        respuesta: "¡Gracias por avisar! Si un link no funciona, contactanos desde el formulario de <strong>💡 Sugerir Herramienta</strong> contándonos cuál es, así lo revisamos y corregimos lo antes posible. 🛠️"
+    },
+    {
+        triggers: ["puedo usarlo en el celular", "funciona en el celular", "funciona en el móvil", "anda en el celular", "es para pc o celular"],
+        respuesta: "Sí, el directorio entero funciona perfecto en el celular: podés buscar, comparar, guardar favoritos y usar el asistente igual que en la computadora. La mayoría de las herramientas listadas también tienen versión para celular o app propia. 📱"
+    },
+    {
+        triggers: ["cual es la mejor ia", "cuál es la mejor ia", "cual es la mejor herramienta", "cuál es la mejor herramienta", "que ia es mejor", "qué ia es mejor"],
+        respuesta: "No hay una sola \"mejor\": depende de para qué la uses. Por eso armamos el <strong>⚖️ Comparador</strong> — ahí podés ver lado a lado cuál te conviene según la tarea, la facilidad de uso y el precio. ⚖️"
+    },
+    {
+        triggers: ["puedo usar varias a la vez", "puedo combinar herramientas", "uso mas de una", "uso más de una"],
+        respuesta: "¡Por supuesto! De hecho muchas personas combinan varias: por ejemplo usan ChatGPT para redactar y después Grammarly para corregir, o Canva para diseñar y CapCut para editar el video final. No hay límite. 🔄"
+    },
+    {
+        triggers: ["necesito crear una cuenta", "tengo que registrarme", "necesito email para usarlo", "hay que registrarse"],
+        respuesta: "Depende de la herramienta: la mayoría te pide crear una cuenta gratuita (con tu email o cuenta de Google) para guardar tu historial, pero algunas como Photopea o Wolfram Alpha se pueden usar sin registrarte. 📧"
+    },
+    {
+        triggers: ["que es freemium", "qué es freemium", "que significa freemium", "qué significa freemium"],
+        respuesta: "<strong>Freemium</strong> quiere decir que podés usar la herramienta gratis, generalmente con algún límite diario o de funciones, y pagar un plan solo si necesitás más. No implica que sea complicada — varias herramientas simples también son freemium. 💜"
     }
 ];
 
@@ -1389,6 +1820,33 @@ function buscarHerramientasPorTexto(query) {
         .filter(p => p.puntaje > 0)
         .sort((a, b) => b.puntaje - a.puntaje)
         .map(p => p.tool);
+}
+
+// Busca la pregunta de FAQ más parecida al mensaje del usuario, contando cuántas
+// palabras tienen en común. Sirve como "red de seguridad" cuando no hay coincidencia
+// exacta de trigger, así el bot no se rinde directo con un mensaje genérico.
+function buscarFaqMasParecida(inputNorm) {
+    const palabrasInput = inputNorm.split(/\s+/).filter(p => p.length > 3);
+    if (palabrasInput.length === 0) return null;
+
+    let mejorMatch = null;
+    let mejorPuntaje = 0;
+
+    faqChat.forEach(item => {
+        item.triggers.forEach(trigger => {
+            const palabrasTrigger = normalizarTexto(trigger).split(/\s+/).filter(p => p.length > 3);
+            const comunes = palabrasInput.filter(p => palabrasTrigger.includes(p)).length;
+
+            if (comunes > mejorPuntaje) {
+                mejorPuntaje = comunes;
+                mejorMatch = item;
+            }
+        });
+    });
+
+    // Solo lo damos por válido si comparten al menos 2 palabras relevantes,
+    // para evitar sugerir algo random por una sola coincidencia débil
+    return mejorPuntaje >= 2 ? mejorMatch : null;
 }
 
 // ======================================================
@@ -1519,6 +1977,15 @@ function procesarMensajeChat(inputOriginal) {
     }
 
     renderSugerenciasChat(['¿Qué es PRO?', 'Necesito presentaciones', 'Soy nuevo']);
+
+    // Antes de rendirnos, probamos si la pregunta se parece bastante a alguna FAQ
+    // (aunque no haya coincidido exactamente con ningún trigger)
+    const faqParecida = buscarFaqMasParecida(inputNorm);
+    if (faqParecida) {
+        renderSugerenciasChat(['Sí, era eso', 'No, busco otra cosa', '¿Cómo empiezo?']);
+        return `No estoy seguro de haber entendido bien, pero quizás esto te ayude: <br><br>${faqParecida.respuesta}`;
+    }
+
     return `No encontré nada específico para eso. Probá con algo como <em>"texto"</em>, <em>"imagen"</em>, <em>"estudio"</em> o <em>"organizar tareas"</em>. 🤔`;
 }
 
@@ -1546,9 +2013,13 @@ function preguntar(categoria) {
     enviarMensajeChat(categoria);
 }
 
-// Conectamos el formulario del chat (en vez de un botón con onclick suelto,
-// usamos submit para que también funcione con Enter desde el celular)
-document.getElementById('chat-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    enviarMensajeChat();
-});
+// Conectamos el formulario del chat.
+// IMPORTANTE: el #chat-form está en el HTML *después* del tag <script>, así que
+// el elemento no existe cuando este script se carga. Lo enlazamos dentro de
+// DOMContentLoaded para asegurar que el DOM esté completo.
+function initChatForm() {
+    document.getElementById('chat-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        enviarMensajeChat();
+    });
+}
