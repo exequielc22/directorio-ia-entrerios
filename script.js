@@ -1024,6 +1024,499 @@ const tools = [
         labels: ["🚀 IA nueva"],
         pros: ["100% gratis, privado y sin límites de uso", "Funciona sin internet una vez descargado", "Compatible con los mejores modelos open source"],
         cons: ["Requiere una PC con buena GPU para buen rendimiento", "Configuración inicial requiere conocimientos técnicos"]
+    },
+
+    // ── TRABAJO REMOTO ─────────────────────────────
+    {
+        name: "Zapier",
+        category: "Trabajo Remoto",
+        description: "Automatizá tareas repetitivas conectando más de 6.000 aplicaciones sin saber programar.",
+        icon: "⚡",
+        link: "https://zapier.com",
+        bestFor: "Automatizar flujos de trabajo entre apps sin código",
+        easeOfUse: "Fácil con plantillas; requiere algo de práctica",
+        pricingDetail: "Gratis hasta 100 tareas/mes; planes de pago para más",
+        rating: 9.2,
+        speed: "rapida",
+        difficulty: "media",
+        labels: ["🔥 Muy popular"],
+        pros: ["Conecta miles de apps populares", "Sin necesidad de programar", "Plantillas listas para usar"],
+        cons: ["Versión gratis muy limitada en volumen", "Curva de aprendizaje inicial"]
+    },
+    {
+        name: "Calendly",
+        category: "Trabajo Remoto",
+        description: "Organizá reuniones sin ir y venir con correos. Compartí tu calendario y que cada uno elija su horario.",
+        icon: "📅",
+        link: "https://calendly.com",
+        bestFor: "Agendar reuniones y citas de forma automática",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis para 1 tipo de evento; planes de pago para más",
+        rating: 9.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Elimina los correos de coordinación", "Se sincroniza con Google Calendar", "Link propio para compartir"],
+        cons: ["Funciones avanzadas requieren plan de pago", "Personalización limitada en versión gratis"]
+    },
+    {
+        name: "Clockify",
+        category: "Trabajo Remoto",
+        description: "Controlá cuánto tiempo dedicás a cada tarea y proyecto. Ideal para freelancers y equipos.",
+        icon: "⏱️",
+        link: "https://clockify.me",
+        bestFor: "Registrar tiempos de trabajo y generar reportes",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "100% gratis para funciones esenciales; planes de pago para equipos grandes",
+        rating: 8.7,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Versión gratis muy completa", "Reportes detallados de horas", "App móvil disponible"],
+        cons: ["Integraciones avanzadas de pago", "UI algo anticuada"]
+    },
+    {
+        name: "Taskade",
+        category: "Trabajo Remoto",
+        description: "Gestor de proyectos con IA integrada que genera tareas, resúmenes y ayuda a planificar proyectos.",
+        icon: "🗂️",
+        link: "https://taskade.com",
+        bestFor: "Gestión de proyectos colaborativa con asistente de IA",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límites; planes de pago para equipos",
+        rating: 8.5,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["IA integrada para generar listas y resúmenes", "Multiplataforma (web, móvil, desktop)", "Colaboración en tiempo real"],
+        cons: ["Algunas funciones de IA requieren plan de pago", "Menos conocido que otras herramientas"]
+    },
+    {
+        name: "Whereby",
+        category: "Trabajo Remoto",
+        description: "Videollamadas profesionales sin descargar nada. Solo compartís el link y listo.",
+        icon: "🎥",
+        link: "https://whereby.com",
+        bestFor: "Reuniones por video sin instalaciones ni cuentas de invitados",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis hasta 100 participantes con límites; planes de pago para más funciones",
+        rating: 8.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Sin instalaciones, funciona en navegador", "Sala permanente con link propio", "Fondo virtual y pantalla compartida"],
+        cons: ["Grabación solo en planes de pago", "Funciones limitadas en versión gratis"]
+    },
+
+    // ── ESTUDIOS / EDUCACIÓN ───────────────────────
+    {
+        name: "QuillBot",
+        category: "Estudios/Educación",
+        description: "Parafraseá, resumí y corregí textos académicos con IA para que suenen más profesionales.",
+        icon: "✍️",
+        link: "https://quillbot.com",
+        bestFor: "Parafrasear, resumir y mejorar textos académicos",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con límites; Premium para funciones avanzadas",
+        rating: 8.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Excelente para reescribir y mejorar textos", "Funciona en varios idiomas incluyendo español", "Extensión para Chrome disponible"],
+        cons: ["Versión gratis limita el largo del texto", "Algunos modos de parafraseo solo en Premium"]
+    },
+    {
+        name: "ChatPDF",
+        category: "Estudios/Educación",
+        description: "Subí cualquier PDF y chateá con él. Ideal para resumir papers, libros de texto y apuntes largos.",
+        icon: "📄",
+        link: "https://www.chatpdf.com",
+        bestFor: "Resumir y hacer preguntas sobre documentos PDF",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con límite de PDFs al día; plan Plus de pago",
+        rating: 8.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Resumé cualquier PDF al instante", "Podés hacer preguntas específicas al documento", "Muy útil para estudiantes universitarios"],
+        cons: ["Límite de páginas y PDFs en versión gratis", "No funciona con PDFs escaneados sin OCR"]
+    },
+    {
+        name: "Consensus",
+        category: "Estudios/Educación",
+        description: "Buscador de papers científicos con IA que extrae conclusiones y te explica los estudios en lenguaje simple.",
+        icon: "🔬",
+        link: "https://consensus.app",
+        bestFor: "Buscar evidencia científica y entender papers académicos",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límite de búsquedas; plan Pro de pago",
+        rating: 8.6,
+        speed: "media",
+        difficulty: "media",
+        labels: ["🚀 IA nueva"],
+        pros: ["Acceso a millones de papers científicos", "Resume y explica los estudios en lenguaje claro", "Muy útil para trabajos de investigación"],
+        cons: ["Fuentes principalmente en inglés", "Búsquedas avanzadas requieren plan de pago"]
+    },
+    {
+        name: "Elicit",
+        category: "Estudios/Educación",
+        description: "Asistente de investigación académica que encuentra y resume papers relevantes para tu tema.",
+        icon: "🧪",
+        link: "https://elicit.com",
+        bestFor: "Investigación académica y revisión de literatura científica",
+        easeOfUse: "Fácil",
+        pricingDetail: "Gratis con límites; plan de pago para investigación intensiva",
+        rating: 8.4,
+        speed: "media",
+        difficulty: "media",
+        labels: [],
+        pros: ["Encuentra papers relevantes automáticamente", "Resume resultados de múltiples estudios", "Ideal para tesis y monografías"],
+        cons: ["Principalmente en inglés", "Requiere cuenta para acceder"]
+    },
+    {
+        name: "Brainly",
+        category: "Estudios/Educación",
+        description: "Comunidad de millones de estudiantes donde podés hacer preguntas y obtener respuestas con explicaciones paso a paso.",
+        icon: "🧠",
+        link: "https://brainly.lat",
+        bestFor: "Resolver dudas de materias escolares con explicaciones paso a paso",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con límites de uso diario; plan Plus de pago",
+        rating: 8.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Millones de respuestas en español", "Explicaciones paso a paso verificadas", "Cubre todas las materias escolares"],
+        cons: ["Algunas respuestas pueden ser incorrectas", "Acceso ilimitado solo en plan de pago"]
+    },
+
+    // ── TAREAS DEL HOGAR ──────────────────────────
+    {
+        name: "Yummly",
+        category: "Tareas del Hogar",
+        description: "Recomendaciones de recetas personalizadas según tus gustos, restricciones alimenticias e ingredientes disponibles.",
+        icon: "🍳",
+        link: "https://www.yummly.com",
+        bestFor: "Encontrar recetas según ingredientes disponibles y preferencias",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con funciones básicas; Pro de pago para más recetas",
+        rating: 8.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Personaliza recetas según alergias y dieta", "Genera lista de compras automática", "Instrucciones paso a paso con fotos"],
+        cons: ["Recetas mayormente en inglés", "Funciones premium de pago"]
+    },
+    {
+        name: "Todoist",
+        category: "Tareas del Hogar",
+        description: "Gestor de tareas del hogar inteligente con recordatorios, fechas límite y filtros de prioridad.",
+        icon: "✅",
+        link: "https://todoist.com",
+        bestFor: "Organizar tareas del hogar con recordatorios y prioridades",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis hasta 5 proyectos; plan Pro de pago para familias",
+        rating: 9.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Interfaz limpia y muy intuitiva", "Recordatorios y fechas límite automáticos", "Sincroniza en todos tus dispositivos"],
+        cons: ["Colaboración familiar requiere plan de pago", "Algunas vistas avanzadas son de pago"]
+    },
+    {
+        name: "Cozi",
+        category: "Tareas del Hogar",
+        description: "Agenda familiar compartida con lista de compras, calendarios y recordatorios para toda la familia.",
+        icon: "👨‍👩‍👧‍👦",
+        link: "https://www.cozi.com",
+        bestFor: "Organizar la familia con calendarios y listas compartidas",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con publicidades; Gold de pago sin publicidades",
+        rating: 8.2,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Calendario familiar sincronizado", "Lista de compras compartida en tiempo real", "Recordatorios de actividades escolares"],
+        cons: ["Versión gratis incluye publicidades", "Diseño algo desactualizado"]
+    },
+    {
+        name: "FoodAI",
+        category: "Tareas del Hogar",
+        description: "Sacá una foto a lo que tenés en la heladera y la IA te sugiere recetas con esos ingredientes.",
+        icon: "📸",
+        link: "https://www.whatscooking.ai",
+        bestFor: "Generar recetas con los ingredientes que tenés en casa",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con uso diario limitado",
+        rating: 7.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Usa foto de ingredientes para sugerir recetas", "Reduce el desperdicio de alimentos", "Muy creativo con los ingredientes disponibles"],
+        cons: ["Reconocimiento de imágenes a veces impreciso", "Pocas recetas en español"]
+    },
+    {
+        name: "BrightNest",
+        category: "Tareas del Hogar",
+        description: "Consejos y planes de limpieza y mantenimiento del hogar personalizados según el tipo de vivienda.",
+        icon: "🏡",
+        link: "https://brightnest.com",
+        bestFor: "Planificar el mantenimiento y limpieza del hogar",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "100% gratis",
+        rating: 7.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Planes de limpieza personalizados", "100% gratuito", "Tips de decoración y organización"],
+        cons: ["Sin app en español", "Actualización de contenido poco frecuente"]
+    },
+
+    // ── CREATIVIDAD / DISEÑO ──────────────────────
+    {
+        name: "Midjourney",
+        category: "Creatividad/Diseño",
+        description: "Generador de imágenes con IA de altísima calidad artística. Escribís una descripción y crea imágenes espectaculares.",
+        icon: "🎨",
+        link: "https://www.midjourney.com",
+        isPro: true,
+        bestFor: "Crear imágenes artísticas de alta calidad con IA",
+        easeOfUse: "Requiere aprender prompts; interfaz en Discord",
+        pricingDetail: "Desde USD 10/mes; sin versión gratis actualmente",
+        rating: 9.5,
+        speed: "media",
+        difficulty: "media",
+        labels: ["🔥 Muy popular", "💎 Premium"],
+        pros: ["Calidad artística excepcional", "Enorme comunidad activa", "Estilos visuales muy variados"],
+        cons: ["Sin versión gratuita", "Interfaz vía Discord puede ser confusa al inicio"]
+    },
+    {
+        name: "Leonardo AI",
+        category: "Creatividad/Diseño",
+        description: "Generador de imágenes con IA con versión gratis muy generosa. Ideal para contenido de redes sociales.",
+        icon: "🖼️",
+        link: "https://leonardo.ai",
+        bestFor: "Crear imágenes para redes sociales y proyectos creativos",
+        easeOfUse: "Fácil",
+        pricingDetail: "150 créditos gratis por día; planes de pago para más",
+        rating: 9.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["150 generaciones gratis al día", "Interfaz web intuitiva sin Discord", "Modelos especializados para distintos estilos"],
+        cons: ["Calidad ligeramente inferior a Midjourney", "Los créditos gratis se agotan rápido en uso intensivo"]
+    },
+    {
+        name: "Suno AI",
+        category: "Creatividad/Diseño",
+        description: "Creá canciones completas con voz y música escribiendo solo una descripción. IA musical asombrosa.",
+        icon: "🎵",
+        link: "https://suno.com",
+        bestFor: "Crear música y canciones completas con IA",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "50 créditos gratis al día; planes de pago para más",
+        rating: 9.1,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Crea canciones completas en segundos", "Incluye voz, letra e instrumentación", "Versión gratis muy generosa"],
+        cons: ["Canciones generadas con usos comerciales requieren plan de pago", "Calidad varía según el género musical"]
+    },
+    {
+        name: "ElevenLabs",
+        category: "Creatividad/Diseño",
+        description: "Convertí texto en voz ultrarealista o cloná tu propia voz. Ideal para podcasts, videos y locuciones.",
+        icon: "🎙️",
+        link: "https://elevenlabs.io",
+        bestFor: "Generar voces realistas y locuciones profesionales con IA",
+        easeOfUse: "Fácil",
+        pricingDetail: "10.000 caracteres gratis/mes; planes de pago para más",
+        rating: 9.3,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Voces ultrarrealistas en español e inglés", "Clonación de voz propia disponible", "API disponible para desarrolladores"],
+        cons: ["Créditos gratis se agotan rápido", "Uso comercial requiere plan de pago"]
+    },
+    {
+        name: "Remove.bg",
+        category: "Creatividad/Diseño",
+        description: "Eliminá el fondo de cualquier foto en segundos con IA. Sin Photoshop ni habilidades de diseño.",
+        icon: "✂️",
+        link: "https://www.remove.bg",
+        bestFor: "Eliminar fondos de fotos de forma automática",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con resolución reducida; créditos de pago para alta resolución",
+        rating: 9.4,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Resultados precisos en segundos", "Sin registro necesario para empezar", "Funciona perfectamente con fotos de personas"],
+        cons: ["Descarga en alta resolución requiere créditos de pago", "Resultados pueden fallar con fondos complejos"]
+    },
+
+    // ── TRÁMITES Y CONSULTAS ──────────────────────
+    {
+        name: "SmallPDF",
+        category: "Trámites y Consultas",
+        description: "Convertí, comprimí, firmá y editá PDFs directamente desde el navegador sin instalar nada.",
+        icon: "📑",
+        link: "https://smallpdf.com",
+        bestFor: "Editar, comprimir y convertir documentos PDF online",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "2 documentos gratis al día; plan Pro de pago para ilimitados",
+        rating: 8.8,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Sin instalación, funciona en navegador", "Cubre todas las necesidades básicas de PDF", "Firma digital integrada"],
+        cons: ["Limitado a 2 tareas gratis por día", "Ilimitado solo en plan de pago"]
+    },
+    {
+        name: "ILovePDF",
+        category: "Trámites y Consultas",
+        description: "Suite completa para gestionar PDFs: unir, dividir, comprimir, convertir y proteger con contraseña.",
+        icon: "❤️",
+        link: "https://www.ilovepdf.com",
+        bestFor: "Gestionar, editar y convertir archivos PDF para trámites",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con archivos de hasta 15 MB; Premium para archivos grandes",
+        rating: 8.6,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: [],
+        pros: ["Herramientas de PDF completamente gratis", "Funciona directamente en navegador", "Disponible en español"],
+        cons: ["Límite de tamaño de archivo en versión gratis", "Sin funciones de IA avanzada"]
+    },
+    {
+        name: "ANSES Digital",
+        category: "Trámites y Consultas",
+        description: "Realizá trámites del ANSES sin ir a la sucursal: consultas de aportes, turnos, historia laboral y más.",
+        icon: "🏛️",
+        link: "https://mi.anses.gob.ar",
+        bestFor: "Gestionar trámites del ANSES de forma online desde casa",
+        easeOfUse: "Fácil con CUIL y clave ANSES",
+        pricingDetail: "100% gratuito y oficial",
+        rating: 8.0,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏅 Oficial"],
+        pros: ["Acceso 24/7 sin ir a la sucursal", "Historial laboral y aportes online", "Turnos para sucursal desde la app"],
+        cons: ["A veces inestable en horas pico", "Requiere clave ANSES o CUIL para ingresar"]
+    },
+    {
+        name: "Renaper Digital",
+        category: "Trámites y Consultas",
+        description: "Accedé a tu DNI digital, validación de identidad y trámites del Registro Civil desde tu celular.",
+        icon: "🪪",
+        link: "https://www.argentina.gob.ar/renaper",
+        bestFor: "Trámites de identidad, DNI digital y validación biométrica",
+        easeOfUse: "Fácil con DNI argentino",
+        pricingDetail: "100% gratuito y oficial",
+        rating: 7.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🏅 Oficial"],
+        pros: ["DNI digital válido legalmente", "Validación de identidad online", "Trámites de matrimonio y nacimiento online"],
+        cons: ["App puede fallar en algunos dispositivos", "Requiere conexión estable a internet"]
+    },
+    {
+        name: "Notion (Gestión de Trámites)",
+        category: "Trámites y Consultas",
+        description: "Organizá tus documentos, vencimientos de trámites y carpetas de papeles con plantillas inteligentes.",
+        icon: "🗃️",
+        link: "https://notion.so",
+        bestFor: "Organizar documentos, vencimientos y papeles del hogar",
+        easeOfUse: "Fácil con plantillas",
+        pricingDetail: "Gratis para uso personal; planes de pago para equipos",
+        rating: 8.7,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Plantillas para organizar documentos familiares", "Recordatorios de vencimientos", "Acceso desde cualquier dispositivo"],
+        cons: ["Curva inicial de aprendizaje", "Sin funciones de trámites gubernamentales directos"]
+    },
+
+    // ── IA AVANZADA ────────────────────────────────
+    {
+        name: "Claude.ai",
+        category: "IA Avanzada",
+        description: "Asistente de IA de Anthropic con excelente capacidad de análisis, redacción larga y razonamiento ético.",
+        icon: "🤍",
+        link: "https://claude.ai",
+        bestFor: "Análisis profundo, textos largos y razonamiento complejo",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con límites; Claude Pro de pago para uso intensivo",
+        rating: 9.4,
+        speed: "media",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva", "🔥 Muy popular"],
+        pros: ["Razonamiento muy profundo y preciso", "Excelente para textos largos y análisis", "Respuestas más cuidadosas y éticas que competidores"],
+        cons: ["Versión gratis tiene límite de mensajes diarios", "Conocimiento con fecha de corte"]
+    },
+    {
+        name: "Grok",
+        category: "IA Avanzada",
+        description: "IA de xAI (Elon Musk) con acceso a información en tiempo real desde X (Twitter) y respuestas directas.",
+        icon: "🌀",
+        link: "https://grok.com",
+        bestFor: "Consultas con información actualizada en tiempo real",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con límites; Premium X para acceso completo",
+        rating: 8.7,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🚀 IA nueva"],
+        pros: ["Acceso a información de X en tiempo real", "Sin filtros excesivos en las respuestas", "Versión gratuita disponible"],
+        cons: ["Requiere cuenta en X (Twitter)", "Calidad variable en consultas especializadas"]
+    },
+    {
+        name: "Mistral AI",
+        category: "IA Avanzada",
+        description: "Modelos de IA europeos de alto rendimiento, open source y con foco en privacidad. Alternativa sólida a GPT.",
+        icon: "💨",
+        link: "https://mistral.ai",
+        bestFor: "IA potente con privacidad y opciones open source",
+        easeOfUse: "Fácil vía web; técnico para uso de API",
+        pricingDetail: "Chat web gratis; API de pago según uso",
+        rating: 8.8,
+        speed: "rapida",
+        difficulty: "media",
+        labels: ["🚀 IA nueva"],
+        pros: ["Open source, privado y europeo", "Modelos muy rápidos y eficientes", "Excelente relación calidad-precio en API"],
+        cons: ["Menos conocido que ChatGPT", "Interfaz web más básica"]
+    },
+    {
+        name: "Poe",
+        category: "IA Avanzada",
+        description: "Plataforma que reúne los mejores modelos de IA (ChatGPT, Claude, Gemini, Llama) en un solo lugar.",
+        icon: "🌐",
+        link: "https://poe.com",
+        bestFor: "Comparar y usar múltiples modelos de IA desde una sola app",
+        easeOfUse: "Muy fácil",
+        pricingDetail: "Gratis con créditos diarios; plan de pago para uso ilimitado",
+        rating: 8.9,
+        speed: "rapida",
+        difficulty: "facil",
+        labels: ["🔥 Muy popular"],
+        pros: ["Acceso a múltiples IAs en un solo lugar", "Podés crear bots personalizados", "Versión gratis incluye GPT-4 y Claude"],
+        cons: ["Créditos gratis limitados para modelos premium", "Requiere cuenta para usar"]
+    },
+    {
+        name: "Jan.ai",
+        category: "IA Avanzada",
+        description: "Alternativa local a LM Studio. Corré modelos de IA completamente offline en tu computadora. 100% privado.",
+        icon: "🔒",
+        link: "https://jan.ai",
+        bestFor: "Ejecutar modelos de IA localmente sin enviar datos a la nube",
+        easeOfUse: "Requiere algo de configuración inicial",
+        pricingDetail: "100% gratuito y open source",
+        rating: 8.3,
+        speed: "potente",
+        difficulty: "avanzada",
+        labels: ["🚀 IA nueva"],
+        pros: ["100% privado, sin datos a servidores externos", "Open source y gratuito", "Interfaz más amigable que Ollama"],
+        cons: ["Requiere hardware decente (GPU recomendada)", "Modelos más grandes ocupan mucho espacio en disco"]
     }
 ];
 
@@ -1036,6 +1529,19 @@ const categoryColorMap = {
     "Trámites y Consultas": "tramites",
     "IA Avanzada": "avanzada"
 };
+
+// 2a. Helper: genera el HTML del ícono oficial de cada herramienta
+function toolIconHtml(tool) {
+    try {
+        const domain = new URL(tool.link).hostname.replace('www.', '');
+        const src = `https://logo.clearbit.com/${domain}?size=64`;
+        const fallback = `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(tool.link)}`;
+        return `<img src="${src}" alt="${tool.name}" class="tool-logo-img" loading="lazy"
+            onerror="this.onerror=null;this.src='${fallback}';this.onerror=function(){this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\\'tool-icon-emoji\\'>${tool.icon}</span>')}">`;
+    } catch(e) {
+        return `<span class="tool-icon-emoji">${tool.icon}</span>`;
+    }
+}
 
 // 2. Función para renderizar las tarjetas
 function renderTools(filteredTools, containerId = 'tool-cards-container') {
@@ -1105,7 +1611,7 @@ function renderTools(filteredTools, containerId = 'tool-cards-container') {
             ${pricingLabel}
             ${favButton}
             <div class="tool-card-inner">
-                <div class="tool-icon-badge">${tool.icon}</div>
+                <div class="tool-icon-badge">${toolIconHtml(tool)}</div>
                 ${categoryTag}
                 <h3 class="text-xl font-bold mb-2">${tool.name}</h3>
                 ${ratingHtml}
@@ -1381,7 +1887,17 @@ function renderTrending() {
     const destacadas = tools.filter(t => t.isPro).slice(0, 8);
     container.innerHTML = '';
 
+    const medalData = [
+        { emoji: '🥇', cls: 'medal--gold',   label: '1.º puesto' },
+        { emoji: '🥈', cls: 'medal--silver', label: '2.º puesto' },
+        { emoji: '🥉', cls: 'medal--bronze', label: '3.º puesto' },
+    ];
+
     destacadas.forEach((tool, index) => {
+        const medal = index < 3
+            ? `<div class="trend-medal ${medalData[index].cls}" title="${medalData[index].label}">${medalData[index].emoji}</div>`
+            : `<span class="trend-rank mb-2">#${index + 1}</span>`;
+
         const card = document.createElement('a');
         card.href = tool.link;
         card.target = '_blank';
@@ -1390,8 +1906,8 @@ function renderTrending() {
         card.innerHTML = `
             <div class="tool-card h-full">
                 <div class="tool-card-inner flex flex-col">
-                    <span class="trend-rank mb-2">#${index + 1}</span>
-                    <div class="tool-icon-badge">${tool.icon}</div>
+                    ${medal}
+                    <div class="tool-icon-badge">${toolIconHtml(tool)}</div>
                     <h3 class="font-bold mb-1">${tool.name}</h3>
                     <p class="text-sm text-gray-500 clamp-3-lines">${tool.description}</p>
                 </div>
